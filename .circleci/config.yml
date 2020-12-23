@@ -1,0 +1,28 @@
+version: 2.1
+jobs:
+  MultiROM-Bacon:
+   docker:
+      - image: dopaemon/docker:docker-image
+   steps:
+      - run:
+          name: Syncing source
+          no_output_timeout: 20m
+          command: |
+            cd ~
+            mkdir MultiROM && cd MultiROM
+            repo init -u https://github.com/KernelPanic-OpenSource/manifest.git -b mr-7.1
+            repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+      - run:
+          name: Building
+          no_output_timeout: 20m
+          command: |
+            cd ~/MultiROM
+            source build/envsetup.sh
+            export ALLOW_MISSING_DEPENDENCIES=true
+            lunch tipsy_bacon-eng
+            mka -j$(nproc --all) recoveryimage
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - MultiROM-Bacon
