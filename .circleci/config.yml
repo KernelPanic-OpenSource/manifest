@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   MultiROM-Bacon:
    docker:
-      - image: dopaemon/docker:docker-image
+      - image: dopaemon/docker-image:MultiROM-7.1
    steps:
       - run:
           name: Syncing source
