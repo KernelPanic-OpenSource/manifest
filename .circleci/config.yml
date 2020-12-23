@@ -19,6 +19,7 @@ jobs:
             cd ~/MultiROM
             source build/envsetup.sh
             export ALLOW_MISSING_DEPENDENCIES=true
+            export LC_ALL=C
             lunch tipsy_bacon-eng
             mka -j$(nproc --all) recoveryimage
 workflows:
