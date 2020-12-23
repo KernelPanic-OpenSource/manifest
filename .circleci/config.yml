@@ -10,8 +10,10 @@ jobs:
           command: |
             cd ~
             mkdir MultiROM && cd MultiROM
-            repo init -u https://github.com/KernelPanic-OpenSource/manifest.git -b mr-7.1
-            repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+            curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > repo
+            chmod a+x /usr/bin/repo
+            ./repo init -u https://github.com/KernelPanic-OpenSource/manifest.git -b mr-7.1
+            ./repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
           name: Building
           no_output_timeout: 20m
