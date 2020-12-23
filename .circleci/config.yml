@@ -9,7 +9,7 @@ jobs:
           no_output_timeout: 20m
           command: |
             cd ~
-            mkdir MultiROM && cd MultiROM
+            mkdir ~/MultiROM && cd ~/MultiROM
             repo init -u https://github.com/KernelPanic-OpenSource/manifest.git -b mr-7.1
             repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
@@ -17,6 +17,7 @@ jobs:
           no_output_timeout: 20m
           command: |
             cd ~/MultiROM
+            rm -rf vendor/qcom/opensource/cryptfs_hw
             source build/envsetup.sh
             export ALLOW_MISSING_DEPENDENCIES=true
             export LC_ALL=C
