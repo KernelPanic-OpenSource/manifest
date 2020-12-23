@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote  name="aosp"
+           fetch="https://android.googlesource.com/" />
+
+  <remote  name="github"
+           fetch="https://github.com" />
+
+  <remote  name="slim"
+           fetch="https://github.com/SlimRoms"
+           revision="mm6.0" />
+
+  <remote name="bb"
+          fetch="https://bitbucket.org/" />
+
+  <remote  name="tipsy"
+           fetch="https://github.com/TipsyOs"
+           revision="6.0" />
+
+  <remote  name="home"
+           fetch="https://github.com/KernelPanic-OpenSource" />
+
+  <default revision="refs/tags/android-6.0.1_r52"
+           remote="aosp"
+           sync-j="4" />
+
+  <project path="build" name="tipsy_build" remote="mr" revision="mr" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+  </project>
+  <project path="bionic" name="android_bionic" remote="slim" />
+  <project path="device/generic/goldfish" name="device/generic/goldfish" groups="pdk" />
+  <project path="device/qcom/common" name="device_qcom_common" remote="mr" revision="mm6.0" />
+  <project path="frameworks/native" name="frameworks_native" remote="tipsy" />
+  <project path="hardware/libhardware" name="hardware_libhardware" remote="slim" />
+  <project path="system/keymaster" name="android_system_keymaster" remote="slim" />
+  <project path="libcore" name="android_libcore" remote="slim" />
+  <project path="libnativehelper" name="platform/libnativehelper" groups="pdk" />
+
+  <project path="prebuilts/clang/linux-x86/host/3.6" name="platform/prebuilts/clang/linux-x86/host/3.6" groups="pdk,linux" />
+  <project path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" groups="pdk,linux,arm" clone-depth="1" />
+  <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-kernel" name="UBERTC/aarch64-linux-android-4.9-kernel" remote="bb" revision="master" />
+  <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" groups="pdk,linux,arm" />
+  <project path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.8" name="platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8" groups="pdk,linux,arm" />
+  <project path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.9" name="GZR-ValidusOS/arm-eabi-4.9" remote="github" revision="master" />
+  <project path="prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8" name="platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8"  groups="pdk,linux" />
+  <project path="prebuilts/ndk" name="platform/prebuilts/ndk" groups="pdk" />
+  <project path="prebuilts/sdk" name="platform/prebuilts/sdk" groups="pdk" />
+  <project path="prebuilts/misc" name="prebuilts_misc" remote="mr" revision="mm6.0" />
+
+  <project path="system/core" name="SlimRoms/android_system_core" remote="github" revision="mm6.0" />
+  <project path="system/extras" name="android_system_extras" remote="slim" />
+  <project path="system/netd" name="android_system_netd" remote="slim" />
+  <project path="device/qcom/sepolicy" name="device_qcom_sepolicy" remote="slim" />
+
+  <project path="vendor/tipsy" name="vendor_tipsy" remote="tipsy" />
+  <project path="vendor/qcom/opensource/cryptfs_hw" name="SlimRoms/vendor_qcom_opensource_cryptfs_hw" remote="github" revision="ng7.1"/>
+
+  <project path="external/bison" name="platform/external/bison" groups="pdk" />
+  <project path="external/boringssl" name="platform/external/boringssl" groups="pdk" />
+  <project path="external/bouncycastle" name="platform/external/bouncycastle" groups="pdk" />
+  <project path="external/busybox" name="android_external_busybox" remote="slim" />
+  <project path="external/bzip2" name="platform/external/bzip2" groups="pdk" />
+  <project path="external/clang" name="platform/external/clang" groups="pdk" />
+  <project path="external/compiler-rt" name="platform/external/compiler-rt" groups="pdk" />
+  <project path="external/e2fsprogs" name="android_external_e2fsprogs" groups="pdk" remote="slim" />
+  <project path="external/elfutils" name="platform/external/elfutils" groups="pdk" />
+  <project path="external/exfat" name="android_external_exfat" remote="slim" />
+  <project name="omnirom/android_external_f2fs-tools" path="external/f2fs-tools" remote="github" revision="android-6.0" />
+  <project path="external/freetype" name="platform/external/freetype" groups="pdk" />
+  <project path="external/fuse" name="android_external_fuse" remote="slim" />
+  <project path="external/gptfdisk" name="platform/external/gptfdisk" groups="pdk-fs" />
+  <project path="external/icu" name="platform/external/icu" groups="pdk" />
+  <project path="external/jemalloc" name="platform/external/jemalloc" groups="pdk" />
+  <project path="external/jpeg" name="platform/external/jpeg" groups="pdk" />
+  <project path="external/libcxx" name="platform/external/libcxx" groups="pdk" />
+  <project path="external/libcxxabi" name="platform/external/libcxxabi" groups="pdk" />
+  <project path="external/libdrm" name="platform/external/libdrm" groups="pdk" />
+  <project path="external/libnl" name="platform/external/libnl" groups="pdk" />
+  <project path="external/libpng" name="platform/external/libpng" groups="pdk" />
+  <project path="external/libseccomp-helper" name="platform/external/libseccomp-helper" groups="pdk-cw-fs,pdk-fs" />
+  <project path="external/libselinux" name="platform/external/libselinux" groups="pdk" />
+  <project path="external/libunwind" name="platform/external/libunwind" groups="pdk" />
+  <project path="external/llvm" name="platform/external/llvm" groups="pdk" />
+  <project path="external/ltrace" name="platform/external/ltrace" groups="pdk-cw-fs,pdk-fs" />
+  <project path="external/lz4" name="platform/external/lz4" groups="pdk-cw-fs,pdk-fs" />
+  <project path="external/lzma" name="platform/external/lzma" groups="pdk" />
+  <project path="external/mksh" name="platform/external/mksh" groups="pdk" />
+  <project path="external/ntfs-3g" name="android_external_ntfs-3g" remote="slim" />
+  <project path="external/pcre" name="platform/external/pcre" groups="pdk" />
+  <project path="external/safe-iop" name="platform/external/safe-iop" groups="pdk" />
+  <project path="external/selinux" name="platform/external/selinux" groups="pdk" />
+  <project path="external/sepolicy" name="android_external_sepolicy" remote="tipsy" />
+  <project path="external/squashfs-tools" name="platform/external/squashfs-tools" groups="pdk" />
+  <project path="external/toybox" name="platform/external/toybox" groups="pdk" />
+  <project path="external/zlib" name="platform/external/zlib" groups="pdk" />
+
+<!-- ADD IN TWRP & MULTIROM REPOS  -->
+  <project name="bootable_recovery" path="bootable/recovery" remote="home" revision="mr-7.1" />
+  <project name="system_extras_multirom" path="system/extras/multirom" remote="home" revision="mr-7.1" />
+  <project name="system_extras_multirom_kexec-tools" path="system/extras/multirom/kexec-tools" remote="home" revision="mr-7.1" />
+  <project name="system_extras_libbootimg" path="system/extras/libbootimg" remote="home" revision="mr-7.1" />
+  <project name="system_extras_multirom_adbd" path="system/extras/multirom/adbd" remote="home" revision="mr-7.1" />
+
+<!-- ADD IN DEVICE-SPECIFIC REPOS  -->
+  <project name="device_oppo_common" path="device/oppo/common" remote="home" revision="mr-7.1" />
+  <project name="device_oneplus_bacon" path="device/oneplus/bacon" remote="home" revision="mr-7.1" />
+  <project name="kernel_oneplus_bacon" path="kernel/oneplus/bacon" remote="home" revision="mr-7.1" />
+
+</manifest>
