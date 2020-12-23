@@ -2,7 +2,7 @@
 -----------------------------
 
 ## Setup PC / Laptop / Server
-'''bash
+```bash
 - Need :
     + : CPU Core I3 / I5 / I7 / I9 / ...
     + : CPU Core Dual ...
@@ -11,9 +11,9 @@
     + : 80Gb HDD ( Liker More And SSD )
     + : Internet
     + : Linux ( Ubuntu / Fedora / Debian / ArchLinux ) Or ( WSL / WSL2 )
-'''
+```
 
-'''bash
+```bash
 On Debian :
 
 sudo apt update
@@ -29,17 +29,17 @@ curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/repo
 sudo mv ~/repo /usr/bin/repo
 
 sudo chmod a+x /usr/bin/repo
-'''
+```
 
 ## Repo Sync
-'''bash
+```bash
 repo init -u https://github.com/KernelPanic-OpenSource/manifest.git -b mr-7.1
 
 repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-'''
+```
 
 ## Start Build
-'''bash
+```bash
 export ALLOW_MISSING_DEPENDENCIES=true
 
 source build/envsetup.sh
@@ -51,15 +51,15 @@ mka -j$(nproc --all) recoveryimage
 mka -j$(nproc --all) multirom_zip
 
 mka -j$(nproc --all) multirom_uninstaller
-'''
+```
 
 ## Info Devices
-'''bash
+```bash
 - Devices : OnePlus One
 - Code name : Bacon
 - Devices name : A0001
-'''
-'''bash
+```
+```bash
 - SoC :
     - Snapdragon 801 :
 		+ : MSM8974AC
@@ -75,30 +75,30 @@ mka -j$(nproc --all) multirom_uninstaller
     - Adreno 330 :
 		+ : 578Mhz
 		+ : 2160p
-'''
-'''bash
+```
+```bash
 - RAM : 3Gb
     - LPDDR3
     - 1888Mhz
-'''
-'''bash
+```
+```bash
 - ROM :
     - 64Gb :
 		+ : Sandstone Black
     - 16Gb :
 		+ : Silk White
-'''
-'''bash
+```
+```bash
 - Battery : 
     + : 3100mAh
     + : LI-PO
-'''
-'''bash
+```
+```bash
 - Display : 
     + : 1920x1080
     + : 401 PPI Pixel
-'''
-'''bash
+```
+```bash
 - Camera :
     - : Rear camera
        		+ : Sony Exmor RS IMX214
@@ -115,14 +115,14 @@ mka -j$(nproc --all) multirom_uninstaller
 		+ : 5 megapixels
 		+ : 1080p@30FPS
 		+ : extra-wide 80º viewing angle
-'''
-'''bash
+```
+```bash
 - Sound :
     + : Dual mono speakers
     + : 3.5 mm
     + : Stereo audio jack
-'''
-'''bash
+```
+```bash
 - Wifi :
     + : Support Dual -> 2Ghz / 5Ghz
-''''
+```
