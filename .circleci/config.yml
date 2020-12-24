@@ -28,9 +28,9 @@ jobs:
           no_output_timeout: 20m
           command: |
             cd ~/MultiROM/out/target/product/bacon
-            ZIPNAME="MULTIROM-$(date +%d_%m_%Y_%H_%M)-bacon.zip"
+            export ZIPNAME="MULTIROM-$(date +%d_%m_%Y_%H_%M)-bacon.zip"
             sudo zip -r9 $ZIPNAME *.img
-            curl -F chat_id=@KernelPanic_OpenSource_CI -F document=@ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
+            curl -F document=@"$ZIPNAME" https://api.telegram.org/bot$BOT_TOKEN/sendDocument?chat_id=@KernelPanic_OpenSource_CI
 workflows:
   version: 2.1
   cooking:
