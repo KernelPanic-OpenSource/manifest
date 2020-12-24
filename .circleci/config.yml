@@ -23,7 +23,7 @@ jobs:
             export LC_ALL=C
             lunch tipsy_bacon-eng
             mka -j$(nproc --all) recoveryimage
-       - run:
+      - run:
           name: Telegram Upload CI
           no_output_timeout: 20m
           command: |
