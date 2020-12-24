@@ -1,4 +1,4 @@
-# MultiROM 7.1 ( TWRP 3.1.1 )
+# MultiROM 9.0 ( TWRP 3.3.1 )
 -----------------------------
 
 ## Setup PC / Laptop / Server
@@ -111,7 +111,7 @@ mka -j$(nproc --all) multirom_uninstaller
        		+ : 720p@120FPS
        		+ : HDR
        		+ : 100Mbps If 30FPS
-     - : Front camera
+    - : Front camera
 		+ : 5 megapixels
 		+ : 1080p@30FPS
 		+ : extra-wide 80º viewing angle
