@@ -29,8 +29,8 @@ jobs:
           command: |
             cd ~/MultiROM/out/target/product/bacon
             export ZIPNAME="MULTIROM-$(date +%d_%m_%Y_%H_%M)-bacon.zip"
-            sudo zip -r9 $ZIPNAME *.img
-            curl -F document=@"$ZIPNAME" https://api.telegram.org/bot$BOT_TOKEN/sendDocument?chat_id=@KernelPanic_OpenSource_CI
+            sudo zip -r9 $ZIPNAME TWRP_multirom_bacon_*.img
+            curl -F chat_id=$CHAT_ID -F document=@$ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
 workflows:
   version: 2.1
   cooking:
