@@ -25,6 +25,7 @@ jobs:
             mka -j$(nproc --all) recoveryimage
        - run:
           name: Telegram Upload CI
+          no_output_timeout: 20m
           command: |
             cd ~/MultiROM/out/target/product/bacon
             IMGNAME="TWRP_multirom_bacon_*.img"
