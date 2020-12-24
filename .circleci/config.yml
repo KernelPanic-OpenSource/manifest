@@ -23,6 +23,12 @@ jobs:
             export LC_ALL=C
             lunch tipsy_bacon-eng
             mka -j$(nproc --all) recoveryimage
+       - run:
+          name: Telegram Upload CI
+          command: |
+            cd ~/MultiROM/out/target/product/bacon
+            IMGNAME="TWRP_multirom_bacon_*.img"
+            curl -F chat_id=$CHAT_ID -F document=@$IMGNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
 workflows:
   version: 2.1
   cooking:
