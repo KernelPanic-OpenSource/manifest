@@ -5,6 +5,13 @@ jobs:
       - image: dopaemon/docker-image:MultiROM
    steps:
       - run:
+          name: Info VPS
+          no_output_timeout: 20m
+          command: |
+            lscpu
+            export TERM=xterm-256color
+            df -h
+      - run:
           name: Syncing source
           no_output_timeout: 20m
           command: |
