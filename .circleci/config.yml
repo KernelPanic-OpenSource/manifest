@@ -10,13 +10,13 @@ jobs:
           command: |
             cd ~
             mkdir ~/CherishOS && cd ~/CherishOS
-	    repo init -u https://github.com/CherishOS/android_manifest.git -b eleven
-	    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-	    git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oneplus_bacon device/oneplus/bacon
-	    git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oppo_msm8974-common device/oppo/msm8974-common
-	    git clonr -b eleven https://github.com/KernelPanic-OpenSource/android_device_oppo_common device/oppo/common
-	    git clone -b eleven https://github.com/KernelPanic-OpenSource/android_hardware_sony_timekeep hardware/sony/timekeep
-	    git clone -b eleven https://github.com/KernelPanic-OpenSource/android_kernel_oneplus_bacon.git kernel/oneplus/bacon
+            repo init -u https://github.com/CherishOS/android_manifest.git -b eleven
+            repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oneplus_bacon device/oneplus/bacon
+            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oppo_msm8974-common device/oppo/msm8974-common
+            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oppo_common device/oppo/common
+            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_hardware_sony_timekeep hardware/sony/timekeep
+            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_kernel_oneplus_bacon.git kernel/oneplus/bacon
       - run:
           name: Building
           no_output_timeout: 20m
