@@ -45,7 +45,7 @@ jobs:
             git clone -b lineage-18.1 https://github.com/LineageOS/android_device_oppo_msm8974-common device/oppo/msm8974-common
             git clone -b lineage-18.1 https://github.com/LineageOS/android_device_oppo_common device/oppo/common
             git clone -b lineage-18.1 https://github.com/LineageOS/android_hardware_sony_timekeep hardware/sony/timekeep
-            git clone -b lineage-18.1 https://github.com/LineageOS/android_kernel_oneplus_bacon.git kernel/oppo/msm8974
+            git clone -b lineage-18.1 https://github.com/LineageOS/android_kernel_oppo_msm8974.git kernel/oppo/msm8974
       - run:
           name: Info
           no_output_timeout: 20m
