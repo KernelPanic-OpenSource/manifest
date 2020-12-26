@@ -5,6 +5,13 @@ jobs:
       - image: dopaemon/docker-image:android
    steps:
       - run:
+          name: Neofetch
+          no_output_timeout: 20m
+          command: |
+            sudo apt update
+            sudo apt install neofetch -y
+            neofetch
+      - run:
           name: Info
           no_output_timeout: 20m
           command: |
