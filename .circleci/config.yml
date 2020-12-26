@@ -63,7 +63,7 @@ jobs:
           name: Building
           no_output_timeout: 20m
           command: |
-            cd ~/CherishOS
+            cd ~/LineageOS
             source build/envsetup.sh
             lunch lineage_bacon-userdebug
             mka -j$(nproc --all) bacon
@@ -84,4 +84,4 @@ workflows:
   version: 2.1
   cooking:
     jobs:
-      - CherishOS-Bacon
+      - LineageOS-Bacon
