@@ -77,7 +77,7 @@ jobs:
           name: Telegram Upload CI
           no_output_timeout: 20m
           command: |
-            cd ~/CherishOS/out/target/product/bacon
+            cd ~/LineageOS/out/target/product/bacon
             export ZIPNAME="lineage*.zip"
             curl -F chat_id=$CHAT_ID -F document=@$ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
 workflows:
