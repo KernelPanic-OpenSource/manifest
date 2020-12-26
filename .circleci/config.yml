@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   CherishOS-Bacon:
    docker:
-      - image: dopaemon/docker-image:android
+      - image: dopaemon/docker-image:nsjail
    steps:
       - run:
           name: Disk Info
