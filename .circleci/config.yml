@@ -5,7 +5,7 @@ jobs:
       - image: dopaemon/docker-image:android
    steps:
       - run:
-          name: Info
+          name: Disk Info
           no_output_timeout: 20m
           command: |
             lscpu
@@ -16,9 +16,9 @@ jobs:
           command: |
             sudo apt update
             sudo apt full-upgrade -y
-            sudo apt install ccache
+            sudo apt install ccache bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev -y
       - run:
-          name: Info
+          name: Disk Info
           no_output_timeout: 20m
           command: |
             lscpu
@@ -32,7 +32,7 @@ jobs:
             repo init -u https://github.com/CherishOS/android_manifest.git -b eleven
             repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
-          name: Info
+          name: Disk Info
           no_output_timeout: 20m
           command: |
             lscpu
@@ -41,13 +41,14 @@ jobs:
           name: Clone Source Tree For Bacon
           no_output_timeout: 20m
           command: |
+            cd ~/CherishOS
             git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oneplus_bacon device/oneplus/bacon
             git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oppo_msm8974-common device/oppo/msm8974-common
             git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oppo_common device/oppo/common
             git clone -b eleven https://github.com/KernelPanic-OpenSource/android_hardware_sony_timekeep hardware/sony/timekeep
             git clone -b eleven https://github.com/KernelPanic-OpenSource/android_kernel_oneplus_bacon.git kernel/oneplus/bacon
       - run:
-          name: Info
+          name: Disk Info
           no_output_timeout: 20m
           command: |
             lscpu
@@ -68,7 +69,7 @@ jobs:
             lunch cherish_bacon-userdebug
             mka -j$(nproc --all) bacon
       - run:
-          name: Info
+          name: Disk Info
           no_output_timeout: 20m
           command: |
             lscpu
