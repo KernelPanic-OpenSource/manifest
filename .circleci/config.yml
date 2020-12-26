@@ -23,6 +23,7 @@ jobs:
           command: |
             git clone -b master https://github.com/akhilnarang/scripts.git ~/scripts
             bash ~/scripts/setup/android_build_env.sh
+            bash ~/scripts/setup/install_android_sdk.sh
       - run:
           name: Disk Info
           no_output_timeout: 20m
