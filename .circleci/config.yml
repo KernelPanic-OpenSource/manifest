@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  CherishOS-Bacon:
+  LineageOS-Bacon:
    docker:
       - image: dopaemon/docker-image:android
    steps:
@@ -24,12 +24,12 @@ jobs:
             lscpu
             df -h
       - run:
-          name: Syncing Source CherishOS
+          name: Syncing Source LineageOS
           no_output_timeout: 20m
           command: |
             cd ~
-            mkdir ~/CherishOS && cd ~/CherishOS
-            repo init -u https://github.com/CherishOS/android_manifest.git -b eleven
+            mkdir ~/LineageOS && cd ~/LineageOS
+            repo init -u https://github.com/LineageOS/android_manifest.git -b lineage-18.1
             repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
           name: Info
@@ -41,11 +41,11 @@ jobs:
           name: Clone Source Tree For Bacon
           no_output_timeout: 20m
           command: |
-            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oneplus_bacon device/oneplus/bacon
-            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oppo_msm8974-common device/oppo/msm8974-common
-            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oppo_common device/oppo/common
-            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_hardware_sony_timekeep hardware/sony/timekeep
-            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_kernel_oneplus_bacon.git kernel/oneplus/bacon
+            git clone -b lineage-18.1 https://github.com/LineageOS/android_device_oneplus_bacon device/oneplus/bacon
+            git clone -b lineage-18.1 https://github.com/LineageOS/android_device_oppo_msm8974-common device/oppo/msm8974-common
+            git clone -b lineage-18.1 https://github.com/LineageOS/android_device_oppo_common device/oppo/common
+            git clone -b lineage-18.1 https://github.com/LineageOS/android_hardware_sony_timekeep hardware/sony/timekeep
+            git clone -b lineage-18.1 https://github.com/LineageOS/android_kernel_oneplus_bacon.git kernel/oppo/msm8974
       - run:
           name: Info
           no_output_timeout: 20m
@@ -65,7 +65,7 @@ jobs:
           command: |
             cd ~/CherishOS
             source build/envsetup.sh
-            lunch cherish_bacon-userdebug
+            lunch lineage_bacon-userdebug
             mka -j$(nproc --all) bacon
       - run:
           name: Info
@@ -78,7 +78,7 @@ jobs:
           no_output_timeout: 20m
           command: |
             cd ~/CherishOS/out/target/product/bacon
-            export ZIPNAME="Cherish*OS*.zip"
+            export ZIPNAME="lineage*.zip"
             curl -F chat_id=$CHAT_ID -F document=@$ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
 workflows:
   version: 2.1
