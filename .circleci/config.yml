@@ -27,7 +27,10 @@ jobs:
           name: Syncing Source CherishOS
           no_output_timeout: 20m
           command: |
-            cd ~
+            cd ~/
+            curl https://storage.googleapis.com/git-repo-downloads/repo > ~/repo
+            sudo chmod a+x ~/repo
+            alias repo="./repo"
             mkdir ~/CherishOS && cd ~/CherishOS
             repo init -u https://github.com/CherishOS/android_manifest.git -b eleven
             repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
