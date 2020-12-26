@@ -18,12 +18,13 @@ jobs:
             sudo apt full-upgrade -y
             sudo apt install ccache curl bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev -y
       - run:
-          name: Akhilnarang
+          name: Setup CCACHE
           no_output_timeout: 20m
           command: |
-            git clone -b master https://github.com/akhilnarang/scripts.git ~/scripts
-            bash ~/scripts/setup/android_build_env.sh
-            bash ~/scripts/setup/install_android_sdk.sh
+            echo "ccache -M 50G" > ~/.bashrc
+            echo "ccache -o compression=true" > ~/.bashrc
+            ccache -M 50G
+            ccache -o compression=true
       - run:
           name: Disk Info
           no_output_timeout: 20m
@@ -65,6 +66,7 @@ jobs:
           name: Export
           no_output_timeout: 20m
           command: |
+            export USE_CCACHE=1
             export CCACHE_EXEC=/usr/bin/ccache
             export ALLOW_MISSING_DEPENDENCIES=true
             export LC_ALL=C
@@ -74,6 +76,7 @@ jobs:
           command: |
             cd ~/CherishOS
             source build/envsetup.sh
+            croot
             lunch cherish_bacon-userdebug
             mka -j$(nproc --all) bacon
       - run:
