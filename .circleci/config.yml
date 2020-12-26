@@ -47,6 +47,8 @@ jobs:
             git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oppo_common device/oppo/common
             git clone -b eleven https://github.com/KernelPanic-OpenSource/android_hardware_sony_timekeep hardware/sony/timekeep
             git clone -b eleven https://github.com/KernelPanic-OpenSource/android_kernel_oneplus_bacon.git kernel/oneplus/bacon
+            git clone -b lineage-18.1 https://github.com/TheMuppets/proprietary_vendor_oppo.git vendor/oppo
+            git clone -b lineage-18.1 https://github.com/TheMuppets/proprietary_vendor_oneplus.git vendor/oneplus
       - run:
           name: Disk Info
           no_output_timeout: 20m
