@@ -1,0 +1,100 @@
+version: 2.1
+jobs:
+  CherishOS-Bacon:
+   docker:
+      - image: dopaemon/docker-image:aosp
+   steps:
+      - run:
+          name: Disk Info
+          no_output_timeout: 20m
+          command: |
+            lscpu
+            df -h
+      - run:
+          name: Install Packages
+          no_output_timeout: 20m
+          command: |
+            sudo apt update
+            sudo apt full-upgrade -y
+            sudo apt install ccache curl bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev -y
+      - run:
+          name: Setup CCACHE
+          no_output_timeout: 20m
+          command: |
+            echo "ccache -M 50G" > ~/.bashrc
+            echo "ccache -o compression=true" > ~/.bashrc
+            ccache -M 50G
+            ccache -o compression=true
+      - run:
+          name: Disk Info
+          no_output_timeout: 20m
+          command: |
+            lscpu
+            df -h
+      - run:
+          name: Syncing Source CherishOS
+          no_output_timeout: 20m
+          command: |
+            mkdir ~/CherishOS && cd ~/CherishOS
+            export AOSP_VOL=$PWD
+            repo init -u https://github.com/CherishOS/android_manifest.git -b eleven
+            repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+      - run:
+          name: Disk Info
+          no_output_timeout: 20m
+          command: |
+            lscpu
+            df -h
+      - run:
+          name: Clone Source Tree For Bacon
+          no_output_timeout: 20m
+          command: |
+            cd ~/CherishOS
+            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oneplus_bacon device/oneplus/bacon
+            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oppo_msm8974-common device/oppo/msm8974-common
+            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_device_oppo_common device/oppo/common
+            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_hardware_sony_timekeep hardware/sony/timekeep
+            git clone -b eleven https://github.com/KernelPanic-OpenSource/android_kernel_oneplus_bacon.git kernel/oneplus/bacon
+            git clone -b lineage-18.1 https://github.com/TheMuppets/proprietary_vendor_oppo.git vendor/oppo
+            git clone -b lineage-18.1 https://github.com/TheMuppets/proprietary_vendor_oneplus.git vendor/oneplus
+      - run:
+          name: Disk Info
+          no_output_timeout: 20m
+          command: |
+            lscpu
+            df -h
+      - run:
+          name: Export
+          no_output_timeout: 20m
+          command: |
+            export USE_CCACHE=1
+            export CCACHE_EXEC=/usr/bin/ccache
+            export ALLOW_MISSING_DEPENDENCIES=true
+            export LC_ALL=C
+      - run:
+          name: Building
+          no_output_timeout: 20m
+          command: |
+            cd ~/CherishOS
+            source build/envsetup.sh
+            croot
+            lunch cherish_bacon-userdebug
+            mka -j$(nproc --all) bacon
+      - run:
+          name: Disk Info
+          no_output_timeout: 20m
+          command: |
+            lscpu
+            df -h
+      - run:
+          name: Telegram Upload CI
+          no_output_timeout: 20m
+          command: |
+            cd ~/CherishOS/out/target/product/bacon
+            export ZIPNAME="Cherish*OS*.zip"
+            curl -F chat_id=$CHAT_ID -F document=@$ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - CherishOS-Bacon
