@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   CherishOS-Bacon:
    docker:
-      - image: dopaemon/docker-image:nsjail
+      - image: dopaemon/docker-image:aosp
    steps:
       - run:
           name: Disk Info
