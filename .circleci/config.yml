@@ -36,6 +36,7 @@ jobs:
           no_output_timeout: 20m
           command: |
             mkdir ~/CherishOS && cd ~/CherishOS
+            export AOSP_VOL=$PWD
             repo init -u https://github.com/CherishOS/android_manifest.git -b eleven
             repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
