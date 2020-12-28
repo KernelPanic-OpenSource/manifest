@@ -10,8 +10,8 @@ jobs:
           command: |
             sudo apt update
             sudo apt upgrade -y
-            sudo apt install python3
-            sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+            sudo apt install python3.6
+            sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 1
             sudo update-alternatives --config python
       - run:
           name: Python Version
