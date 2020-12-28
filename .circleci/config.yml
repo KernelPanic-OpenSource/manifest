@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   cm-bacon:
    docker:
-      - image: dopaemon/docker-image:Ubuntu14
+      - image: kylemanna/aosp:latest
    steps:
       - run:
           name: Syncing source
