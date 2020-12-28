@@ -20,6 +20,12 @@ jobs:
           command: |
             python --version
       - run:
+          name: Github Config
+          no_output_timeout: 20m
+          command: |
+            git config --global user.name "dopaemon"
+            git config --global user.email "polarisdp@gmail.com"
+      - run:
           name: Syncing source
           no_output_timeout: 20m
           command: |
