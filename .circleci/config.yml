@@ -33,19 +33,18 @@ jobs:
             export ALLOW_MISSING_DEPENDENCIES=true
             export LC_ALL=C
             lunch cm_bacon-userdebug
-
-
-
+            mka halium-boot -j$(nproc --all)
+            mka systemimage -j$(nproc --all)
       - run:
           name: Telegram Upload CI
           no_output_timeout: 20m
           command: |
-            cd ~/MultiROM/out/target/product/bacon
-            export ZIPNAME="MultiROM-7.1-$(date +%d_%m_%Y_%H_%M)-bacon.zip"
-            sudo zip -r9 $ZIPNAME . -i TWRP_multirom_bacon_*.img multirom-*-bacon.zip multirom_uninstaller.zip
+            cd ~/ubuntu/out/target/product/bacon
+            export ZIPNAME="UbPorts-5.1-$(date +%d_%m_%Y_%H_%M)-bacon.zip"
+            sudo zip -r9 $ZIPNAME . -i *.img *.zip
             curl -F chat_id=$CHAT_ID -F document=@$ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
 workflows:
   version: 2.1
   cooking:
     jobs:
-      - MultiROM-Bacon
+      - UbPorts-5.1-Bacon
