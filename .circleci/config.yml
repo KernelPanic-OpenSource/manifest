@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  UbPorts-5.1-Bacon:
+  ubp-5.1:
    docker:
       - image: dopaemon/docker-image:MultiROM
    steps:
@@ -47,4 +47,4 @@ workflows:
   version: 2.1
   cooking:
     jobs:
-      - UbPorts-5.1-Bacon
+      - ubp-5.1
