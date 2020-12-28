@@ -8,7 +8,7 @@ jobs:
           name: Install Packages
           no_output_timeout: 20m
           command: |
-            sudo add-apt-repository ppa:jonathonf/python-3.6
+            sudo add-apt-repository ppa:deadsnakes/ppa
             sudo apt update
             sudo apt upgrade -y
             sudo apt install python3.6
