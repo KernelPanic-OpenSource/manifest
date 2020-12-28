@@ -1,0 +1,51 @@
+version: 2.1
+jobs:
+  UbPorts-5.1-Bacon:
+   docker:
+      - image: dopaemon/docker-image:MultiROM
+   steps:
+      - run:
+          name: Syncing source
+          no_output_timeout: 20m
+          command: |
+            cd ~
+            mkdir ~/ubuntu && cd ~/ubuntu
+            repo init -u https://github.com/ubports/android.git -b ubp-5.1
+            repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+      - run:
+          name: Git Tree Bacon
+          no_output_timeout: 20m
+          command: |
+            cd ~/ubuntu
+            git clone -b ubp-5.1 https://github.com/ubports/android_device_oneplus_bacon-1.git device/oneplus/bacon
+            git clone -b ubp-5.1-caf https://github.com/ubports/android_kernel_oneplus_msm8974.git kernel/oneplus/msm8974
+            git clone -b ubp-5.1 https://github.com/ubports/android_device_oppo_common.git device/oppo/common
+            git clone -b cm-12.1 https://github.com/CyanogenMod/android_device_qcom_common.git device/qcom/common
+            git clone -b cm-12.1 https://github.com/ubports/android_device_oppo_msm8974-common.git device/oppo/msm8974-common
+            git clone -b cm-12.1 https://github.com/TheMuppets/proprietary_vendor_oppo.git vendor/oppo
+            git clone -b cm-12.1 https://github.com/TheMuppets/proprietary_vendor_oneplus.git vendor/oneplus
+      - run:
+          name: Building
+          no_output_timeout: 20m
+          command: |
+            cd ~/ubuntu
+            source build/envsetup.sh
+            export ALLOW_MISSING_DEPENDENCIES=true
+            export LC_ALL=C
+            lunch cm_bacon-userdebug
+
+
+
+      - run:
+          name: Telegram Upload CI
+          no_output_timeout: 20m
+          command: |
+            cd ~/MultiROM/out/target/product/bacon
+            export ZIPNAME="MultiROM-7.1-$(date +%d_%m_%Y_%H_%M)-bacon.zip"
+            sudo zip -r9 $ZIPNAME . -i TWRP_multirom_bacon_*.img multirom-*-bacon.zip multirom_uninstaller.zip
+            curl -F chat_id=$CHAT_ID -F document=@$ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - MultiROM-Bacon
