@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  ubp-bacon:
+  cm-bacon:
    docker:
       - image: dopaemon/docker-image:MultiROM
    steps:
@@ -9,26 +9,26 @@ jobs:
           no_output_timeout: 20m
           command: |
             cd ~
-            mkdir ~/ubuntu && cd ~/ubuntu
-            repo init -u https://github.com/ubports/android.git -b ubp-5.1
+            mkdir ~/cm && cd ~/cm
+            repo init -u https://github.com/CyanogenMod/android.git -b cm-12.1
             repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
           name: Git Tree Bacon
           no_output_timeout: 20m
           command: |
-            cd ~/ubuntu
-            git clone -b ubp-5.1 https://github.com/ubports/android_device_oneplus_bacon-1.git device/oneplus/bacon
-            git clone -b ubp-5.1-caf https://github.com/ubports/android_kernel_oneplus_msm8974.git kernel/oneplus/msm8974
-            git clone -b ubp-5.1 https://github.com/ubports/android_device_oppo_common.git device/oppo/common
+            cd ~/cm
+            git clone -b cm-12.1 https://github.com/CyanogenMod/android_device_oneplus_bacon-1.git device/oneplus/bacon
+            git clone -b cm-12.1 https://github.com/CyanogenMod/android_kernel_oneplus_msm8974.git kernel/oneplus/msm8974
+            git clone -b cm-12.1 https://github.com/CyanogenMod/android_device_oppo_common.git device/oppo/common
             git clone -b cm-12.1 https://github.com/CyanogenMod/android_device_qcom_common.git device/qcom/common
-            git clone -b cm-12.1 https://github.com/ubports/android_device_oppo_msm8974-common.git device/oppo/msm8974-common
+            git clone -b cm-12.1 https://github.com/CyanogenMod/android_device_oppo_msm8974-common.git device/oppo/msm8974-common
             git clone -b cm-12.1 https://github.com/TheMuppets/proprietary_vendor_oppo.git vendor/oppo
             git clone -b cm-12.1 https://github.com/TheMuppets/proprietary_vendor_oneplus.git vendor/oneplus
       - run:
           name: Building
           no_output_timeout: 20m
           command: |
-            cd ~/ubuntu
+            cd ~/cm
             source build/envsetup.sh
             export ALLOW_MISSING_DEPENDENCIES=true
             export LC_ALL=C
@@ -38,12 +38,11 @@ jobs:
           name: Telegram Upload CI
           no_output_timeout: 20m
           command: |
-            cd ~/ubuntu/out/target/product/bacon
-            export ZIPNAME="UbPorts-5.1-$(date +%d_%m_%Y_%H_%M)-bacon.zip"
-            sudo zip -r9 $ZIPNAME . -i *.img *.zip
+            cd ~/cm/out/target/product/bacon
+            export ZIPNAME="*.zip"
             curl -F chat_id=$CHAT_ID -F document=@$ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
 workflows:
   version: 2.1
   cooking:
     jobs:
-      - ubp-bacon
+      - cm-bacon
