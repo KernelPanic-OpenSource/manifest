@@ -33,8 +33,7 @@ jobs:
             export ALLOW_MISSING_DEPENDENCIES=true
             export LC_ALL=C
             lunch cm_bacon-userdebug
-            mka halium-boot -j$(nproc --all)
-            mka systemimage -j$(nproc --all)
+            mka bacon -j$(nproc --all)
       - run:
           name: Telegram Upload CI
           no_output_timeout: 20m
