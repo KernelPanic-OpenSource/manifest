@@ -5,6 +5,20 @@ jobs:
       - image: dopaemon/docker-image:Ubuntu14
    steps:
       - run:
+          name: Install Packages
+          no_output_timeout: 20m
+          command: |
+            sudo apt update
+            sudo apt upgrade -y
+            sudo apt install python3
+            update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+            update-alternatives --config python
+      - run:
+          name: Python Version
+          no_output_timeout: 20m
+          command: |
+            python --version
+      - run:
           name: Syncing source
           no_output_timeout: 20m
           command: |
