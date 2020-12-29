@@ -1,0 +1,125 @@
+version: 2.1
+jobs:
+  android:
+   docker:
+      - image: ubuntu:18.04
+   steps:
+      - run:
+          name: sudo apt update
+          no_output_timeout: 20m
+          command: |
+            sudo apt update
+      - run:
+          name: sudo apt full-upgrade -y
+          no_output_timeout: 20m
+          command: |
+            sudo apt full-upgrade -y
+      - run:
+          name: Add PPA OpenJDK
+          no_output_timeout: 20m
+          command: |
+            sudo add-apt-repository ppa:openjdk-r/ppa
+      - run:
+          name: sudo apt update
+          no_output_timeout: 20m
+          command: |
+            sudo apt update
+      - run:
+          name: Unistall OpenJDK
+          no_output_timeout: 20m
+          command: |
+            sudo apt-get purge openjdk-8-jdk openjdk-8-jre openjdk-11-jdk openjdk-11-jre -y
+      - run:
+          name: Install OpenJDK 7 (Android Lolipop)
+          no_output_timeout: 20m
+          command: |
+            sudo apt install openjdk-7-jdk openjdk-7-jre -y
+      - run:
+          name: Install Packages
+          no_output_timeout: 20m
+          command: |
+            sudo apt install bison repo libssl-dev build-essential curl flex git gnupg gperf liblz4-tool libncurses5-dev libsdl1.2-dev libxml2 libxml2-utils lzop pngcrush schedtool squashfs-tools xsltproc zip zlib1g-dev build-essential kernel-package libncurses5-dev bzip2 git python sudo gcc g++ openssh-server tar gzip ca-certificates -y
+      - run:
+          name: Python Version
+          no_output_timeout: 20m
+          command: |
+            python --version
+      - run:
+          name: Github Config
+          no_output_timeout: 20m
+          command: |
+            git config --global user.name "dopaemon"
+            git config --global user.email "polarisdp@gmail.com"
+            git config --global color.ui true
+      - run:
+          name: alAkhilnarang Scripts
+          no_output_timeout: 20m
+          command: |
+            sudo git clone https://github.com/akhilnarang/scripts /scripts
+            sudo cd /scripts
+            sudo bash setup/android_build_env.sh && bash setup/install_android_sdk.sh
+      - run:
+          name: Syncing source
+          no_output_timeout: 20m
+          command: |
+            cd ~
+            mkdir ~/cm && cd ~/cm
+            repo init -u https://github.com/LineageOS/android.git -b cm-14.1
+      - run:
+          name: Start Sync
+          no_output_timeout: 20m
+          command: |
+            repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+      - run:
+          name: Git Tree Bacon
+          no_output_timeout: 20m
+          command: |
+            cd ~/cm
+            git clone -b cm-14.1 https://github.com/LineageOS/android_device_oneplus_bacon.git device/oneplus/bacon
+            git clone -b cm-14.1 https://github.com/LineageOS/android_kernel_oneplus_msm8974.git kernel/oneplus/msm8974
+            git clone -b cm-14.1 https://github.com/LineageOS/android_device_oppo_common.git device/oppo/common
+            git clone -b cm-14.1 https://github.com/LineageOS/android_device_qcom_common.git device/qcom/common
+            git clone -b cm-14.1 https://github.com/LineageOS/android_device_oppo_msm8974-common.git device/oppo/msm8974-common
+            git clone -b cm-14.1 https://github.com/TheMuppets/proprietary_vendor_oppo.git vendor/oppo
+            git clone -b cm-14.1 https://github.com/TheMuppets/proprietary_vendor_oneplus.git vendor/oneplus
+      - run:
+          name: Export Command
+          no_output_timeout: 20m
+          command: |
+            echo "export ALLOW_MISSING_DEPENDENCIES=true" >> ~/.bashrc
+            echo "export LC_ALL=C" >> ~/.bashrc
+            echo "export ZIPNAME="*.zip" >> ~/.bashrc
+      - run:
+          name: source ~/.bashrc
+          no_output_timeout: 20m
+          command: |
+            source ~/.bashrc
+      - run:
+          name: source build/envsetup.sh
+          no_output_timeout: 20m
+          command: |
+            cd ~/cm
+            source build/envsetup.sh
+      - run:
+          name: lunch cm_bacon-userdebug
+          no_output_timeout: 20m
+          command: |
+            cd ~/cm
+            lunch cm_bacon-userdebug
+      - run:
+          name: mka bacon -j$(nproc --all)
+          no_output_timeout: 20m
+          command: |
+            cd ~/cm
+            mka bacon -j$(nproc --all)
+      - run:
+          name: Telegram Upload CI
+          no_output_timeout: 20m
+          command: |
+            cd ~/cm/out/target/product/bacon
+            curl -F chat_id=$CHAT_ID -F document=@$ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - android
