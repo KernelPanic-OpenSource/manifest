@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   android:
    docker:
-      - image: ubuntu:18.04
+      - image: dopaemon/docker-image:android
    steps:
       - run:
           name: sudo apt update
