@@ -15,6 +15,11 @@ jobs:
           command: |
             sudo apt full-upgrade -y
       - run:
+          name: Install add-apt-repository
+          no_output_timeout: 20m
+          command: |
+            sudo apt install software-properties-common -y
+      - run:
           name: Add PPA OpenJDK
           no_output_timeout: 20m
           command: |
