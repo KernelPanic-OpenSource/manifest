@@ -110,7 +110,7 @@ jobs:
           command: |
             echo "export ALLOW_MISSING_DEPENDENCIES=true" >> ~/.bashrc
             echo "export LC_ALL=C" >> ~/.bashrc
-            echo "export ZIPNAME="*.zip" >> ~/.bashrc
+            echo "export ZIPNAME=*.zip" >> ~/.bashrc
       - run:
           name: source ~/.bashrc
           no_output_timeout: 20m
