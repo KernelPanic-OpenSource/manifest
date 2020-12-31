@@ -35,7 +35,7 @@ jobs:
           command: |
             sudo apt-get purge openjdk-8-jdk openjdk-8-jre openjdk-11-jdk openjdk-11-jre -y
       - run:
-          name: Install OpenJDK 7 (Android Lolipop)
+          name: Install OpenJDK 7 (Android Nougat)
           no_output_timeout: 20m
           command: |
             sudo apt install openjdk-7-jdk openjdk-7-jre -y
@@ -60,12 +60,10 @@ jobs:
           name: Akhilnarang Scripts
           no_output_timeout: 20m
           command: |
-            sudo -s
-            git clone https://github.com/akhilnarang/scripts /scripts
-            cd /scripts
+            git clone https://github.com/akhilnarang/scripts ~/scripts
+            cd ~/scripts
             bash setup/android_build_env.sh && bash setup/install_android_sdk.sh
-            exit
-            df -h
+            df -hal
       - run:
           name: Syncing source
           no_output_timeout: 20m
