@@ -60,9 +60,10 @@ jobs:
           name: alAkhilnarang Scripts
           no_output_timeout: 20m
           command: |
-            sudo git clone https://github.com/akhilnarang/scripts /scripts
-            sudo cd /scripts
-            sudo bash setup/android_build_env.sh && bash setup/install_android_sdk.sh
+            sudo -s
+            git clone https://github.com/akhilnarang/scripts /scripts
+            cd /scripts
+            bash setup/android_build_env.sh && bash setup/install_android_sdk.sh
       - run:
           name: Syncing source
           no_output_timeout: 20m
