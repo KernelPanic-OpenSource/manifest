@@ -69,8 +69,10 @@ jobs:
           name: Curl Repo Bin From Google
           no_output_timeout: 20m
           command: |
-            curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-            chmod a+x ~/bin/repo
+            mkdir -p ~/bin
+            cd ~/
+            curl https://storage.googleapis.com/git-repo-downloads/repo > repo
+            chmod a+x repo
       - run:
           name: Syncing source
           no_output_timeout: 20m
