@@ -57,7 +57,7 @@ jobs:
             git config --global user.email "polarisdp@gmail.com"
             git config --global color.ui true
       - run:
-          name: alAkhilnarang Scripts
+          name: Akhilnarang Scripts
           no_output_timeout: 20m
           command: |
             sudo -s
