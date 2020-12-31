@@ -43,12 +43,13 @@ jobs:
           name: Install Packages
           no_output_timeout: 20m
           command: |
-            sudo apt install bison repo libssl-dev build-essential curl flex git gnupg gperf liblz4-tool libncurses5-dev libsdl1.2-dev libxml2 libxml2-utils lzop pngcrush schedtool squashfs-tools xsltproc zip zlib1g-dev build-essential kernel-package libncurses5-dev bzip2 git python sudo gcc g++ openssh-server tar gzip ca-certificates -y
+            sudo apt install python3 bison repo libssl-dev build-essential curl flex git gnupg gperf liblz4-tool libncurses5-dev libsdl1.2-dev libxml2 libxml2-utils lzop pngcrush schedtool squashfs-tools xsltproc zip zlib1g-dev build-essential kernel-package libncurses5-dev bzip2 git python sudo gcc g++ openssh-server tar gzip ca-certificates -y
       - run:
           name: Python Version
           no_output_timeout: 20m
           command: |
             python --version
+            python3 --version
       - run:
           name: Github Config
           no_output_timeout: 20m
@@ -65,17 +66,23 @@ jobs:
             bash setup/android_build_env.sh && bash setup/install_android_sdk.sh
             df -hal
       - run:
+          name: Curl Repo Bin From Google
+          no_output_timeout: 20m
+          command: |
+            curl https://storage.googleapis.com/git-repo-downloads/repo-1 > ~/bin/repo
+            chmod a+x ~/bin/repo
+      - run:
           name: Syncing source
           no_output_timeout: 20m
           command: |
             cd ~
             mkdir ~/cm && cd ~/cm
-            repo init -u https://github.com/LineageOS/android.git -b cm-14.1
+            python3 ~/bin/repo init -u https://github.com/LineageOS/android.git -b cm-14.1
       - run:
           name: Start Sync
           no_output_timeout: 20m
           command: |
-            repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+            python3 ~/bin/repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
           name: Git Tree Bacon
           no_output_timeout: 20m
