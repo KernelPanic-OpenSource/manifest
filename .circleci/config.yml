@@ -90,6 +90,7 @@ jobs:
           name: Start Sync
           no_output_timeout: 20m
           command: |
+            cd ~/cm
             python3.6 ~/repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
           name: Git Tree Bacon
