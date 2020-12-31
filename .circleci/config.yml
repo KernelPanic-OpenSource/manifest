@@ -79,7 +79,6 @@ jobs:
           command: |
             cd ~/
             mkdir ~/cm && cd ~/cm
-            chmod a+x repo
             python3 ~/repo init -u https://github.com/LineageOS/android.git -b cm-14.1
       - run:
           name: Start Sync
