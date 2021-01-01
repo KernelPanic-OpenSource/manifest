@@ -40,7 +40,7 @@ jobs:
           command: |
             sudo apt-get purge openjdk-8-jdk openjdk-8-jre openjdk-11-jdk openjdk-11-jre -y
       - run:
-          name: Install OpenJDK 7 (Android Nougat)
+          name: Install OpenJDK 7 (Android Lolipop)
           no_output_timeout: 20m
           command: |
             sudo apt install openjdk-7-jdk openjdk-7-jre -y
