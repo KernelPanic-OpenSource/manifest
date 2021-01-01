@@ -8,7 +8,7 @@ jobs:
           name: Include DPKG i386
           no_output_timeout: 20m
           command: |
-            dpkg --add-architecture i386
+            sudo dpkg --add-architecture i386
       - run:
           name: sudo apt update
           no_output_timeout: 20m
