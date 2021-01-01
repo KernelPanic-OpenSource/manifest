@@ -148,7 +148,7 @@ jobs:
             cd ~/cm
             source build/envsetup.sh
             lunch cm_bacon-userdebug
-            brunch bacon
+            mka otapackage -j$(nproc --all)
       - run:
           name: Telegram Upload CI
           no_output_timeout: 20m
