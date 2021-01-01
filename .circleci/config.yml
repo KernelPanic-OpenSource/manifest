@@ -86,7 +86,7 @@ jobs:
           command: |
             cd ~/
             mkdir ~/cm && cd ~/cm
-            python3.6 ~/repo init -u https://github.com/CyanogenmodOS/android.git -b cm-12.1
+            python3.6 ~/repo init -u https://github.com/Cyanogenmod/android.git -b cm-12.1
       - run:
           name: Start Sync
           no_output_timeout: 20m
@@ -98,11 +98,11 @@ jobs:
           no_output_timeout: 20m
           command: |
             cd ~/cm
-            git clone -b cm-12.1 https://github.com/LineageOS/android_device_oneplus_bacon.git device/oneplus/bacon
-            git clone -b cm-12.1 https://github.com/LineageOS/android_kernel_oneplus_msm8974.git kernel/oneplus/msm8974
-            git clone -b cm-12.1 https://github.com/LineageOS/android_device_oppo_common.git device/oppo/common
-            git clone -b cm-12.1 https://github.com/LineageOS/android_device_qcom_common.git device/qcom/common
-            git clone -b cm-12.1 https://github.com/LineageOS/android_device_oppo_msm8974-common.git device/oppo/msm8974-common
+            git clone -b cm-12.1 https://github.com/CyanogenMod/android_device_oneplus_bacon.git device/oneplus/bacon
+            git clone -b cm-12.1 https://github.com/CyanogenMod/android_kernel_oneplus_msm8974.git kernel/oneplus/msm8974
+            git clone -b cm-12.1 https://github.com/CyanogenMod/android_device_oppo_common.git device/oppo/common
+            git clone -b cm-12.1 https://github.com/CyanogenMod/android_device_qcom_common.git device/qcom/common
+            git clone -b cm-12.1 https://github.com/CyanogenMod/android_device_oppo_msm8974-common.git device/oppo/msm8974-common
             git clone -b cm-12.1 https://github.com/TheMuppets/proprietary_vendor_oppo.git vendor/oppo
             git clone -b cm-12.1 https://github.com/TheMuppets/proprietary_vendor_oneplus.git vendor/oneplus
       - run:
