@@ -124,19 +124,19 @@ jobs:
             cd ~/cm
             source build/envsetup.sh
       - run:
-          name: lunch cm_bacon-userdebug
+          name: lunch lineage_bacon-userdebug
           no_output_timeout: 20m
           command: |
             cd ~/cm
             source build/envsetup.sh
-            lunch cm_bacon-userdebug
+            lunch lineage_bacon-userdebug
       - run:
           name: mka bacon -j$(nproc --all)
           no_output_timeout: 20m
           command: |
             cd ~/cm
             source build/envsetup.sh
-            lunch cm_bacon-userdebug
+            lunch lineage_bacon-userdebug
             mka bacon -j$(nproc --all)
       - run:
           name: Telegram Upload CI
