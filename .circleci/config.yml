@@ -128,12 +128,15 @@ jobs:
           no_output_timeout: 20m
           command: |
             cd ~/cm
+            source build/envsetup.sh
             lunch cm_bacon-userdebug
       - run:
           name: mka bacon -j$(nproc --all)
           no_output_timeout: 20m
           command: |
             cd ~/cm
+            source build/envsetup.sh
+            lunch cm_bacon-userdebug
             mka bacon -j$(nproc --all)
       - run:
           name: Telegram Upload CI
