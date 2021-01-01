@@ -45,10 +45,10 @@ jobs:
           command: |
             sudo apt-get purge openjdk-8-jdk openjdk-8-jre openjdk-11-jdk openjdk-11-jre -y
       - run:
-          name: Install OpenJDK 7 (Android Lolipop)
+          name: Install OpenJDK 8 (Android Nougat)
           no_output_timeout: 20m
           command: |
-            sudo apt install openjdk-7-jdk openjdk-7-jre -y
+            sudo apt install openjdk-8-jdk openjdk-8-jre -y
       - run:
           name: Install Packages
           no_output_timeout: 20m
@@ -97,7 +97,7 @@ jobs:
           command: |
             cd ~/
             mkdir ~/cm && cd ~/cm
-            python3.6 ~/repo init -u https://github.com/Halium/android.git -b halium-5.1
+            python3.6 ~/repo init -u https://github.com/Halium/android.git -b halium-7.1
       - run:
           name: Start Sync
           no_output_timeout: 20m
@@ -109,13 +109,17 @@ jobs:
           no_output_timeout: 20m
           command: |
             cd ~/cm
-            git clone -b ubp-5.1 https://github.com/ubports/android_device_oneplus_bacon-1 device/oneplus/bacon
-            git clone -b ubp-5.1-caf https://github.com/ubports/android_kernel_oneplus_msm8974 kernel/oneplus/msm8974
-            git clone -b cm-12.1 https://github.com/CyanogenMod/android_device_oppo_common.git device/oppo/common
-            git clone -b cm-12.1 https://github.com/CyanogenMod/android_device_qcom_common.git device/qcom/common
-            git clone -b cm-12.1 https://github.com/CyanogenMod/android_device_oppo_msm8974-common.git device/oppo/msm8974-common
-            git clone -b cm-12.1 https://github.com/TheMuppets/proprietary_vendor_oppo.git vendor/oppo
-            git clone -b cm-12.1 https://github.com/TheMuppets/proprietary_vendor_oneplus.git vendor/oneplus
+            rm -rvf external/toybox
+            rm -rvf bootable/recovery
+            rm -rvf system/core
+            git clone -b halium-7.1 https://github.com/ubports/android_device_oneplus_bacon-1.git device/oneplus/bacon
+            git clone -b halium-7.1 https://github.com/ubports/android_kernel_oneplus_msm8974.git kernel/oneplus/msm8974
+            git clone -b halium-7.1 https://github.com/fredldotme/android_external_gpg.git external/gpg
+            git clone -b halium-7.1 https://github.com/fredldotme/android_external_toybox.git external/toybox
+            git clone -b halium-7.1 https://github.com/ubports/android_bootable_recovery.git bootable/recovery
+            git clone -b halium-7.1-adbroot https://github.com/Halium/android_system_core.git system/core 
+            git clone -b cm-14.1 https://github.com/LineageOS/android_device_oppo_common.git device/oppo/common
+            git clone -b cm-14.1 https://github.com/TheMuppets/proprietary_vendor_oneplus.git vendor/oneplus
       - run:
           name: Export Command
           no_output_timeout: 20m
