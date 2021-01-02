@@ -171,8 +171,7 @@ jobs:
             sudo zip -rv9 $ZIPNAME . -i halium-boot.img system.img
             ls -lash halium-boot.img
             ls -lash system.img
-            # curl -F chat_id=$CHAT_ID -F document=@$ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
-            sshpass -p '$PASSWORD' rsync -avP -e ssh $ZIPNAME $USERNAME:/home/frs/project/halium-bacon/
+            sshpass -p $PASSWORD rsync -avP -e ssh $ZIPNAME dopaemon@frs.sourceforge.net:/home/frs/project/halium-bacon/
 workflows:
   version: 2.1
   cooking:
