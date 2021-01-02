@@ -113,13 +113,13 @@ jobs:
             rm -rvf bootable/recovery
             rm -rvf system/core
             git clone -b halium-7.1 https://github.com/ubports/android_device_oneplus_bacon-1.git device/oneplus/bacon
-            git clone -b halium-7.1 https://github.com/ubports/android_kernel_oneplus_msm8974.git kernel/oneplus/msm8974
+            git clone -b halium-7.1 --single-branch https://github.com/ubports/android_kernel_oneplus_msm8974.git kernel/oneplus/msm8974
             git clone -b halium-7.1 https://github.com/fredldotme/android_external_gpg.git external/gpg
             git clone -b halium-7.1 https://github.com/fredldotme/android_external_toybox.git external/toybox
             git clone -b halium-7.1 https://github.com/ubports/android_bootable_recovery.git bootable/recovery
             git clone -b halium-7.1-adbroot https://github.com/Halium/android_system_core.git system/core 
             git clone -b halium-7.1 https://github.com/KernelPanic-OpenSource/android_device_oppo_common.git device/oppo/common
-            git clone -b cm-14.1 https://github.com/TheMuppets/proprietary_vendor_oneplus.git vendor/oneplus
+            git clone -b halium-7.1 --single-branch https://github.com/KernelPanic-OpenSource/proprietary_vendor_oneplus.git vendor/oneplus
       - run:
           name: Export Command
           no_output_timeout: 20m
