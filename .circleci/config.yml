@@ -163,16 +163,20 @@ jobs:
             lunch lineage_bacon-userdebug
             mka systemimage -j$(nproc --all)
       - run:
+          name: Create Ssh
+          no_output_timeout: 20m
+          command: |
+            mkdir -p ~/.ssh
+            ssh-keyscan -t rsa frs.sourceforge.net >> ~/.ssh/known_hosts
+            ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -P ""
+      - run:
           name: SourceForge Upload
           no_output_timeout: 20m
           command: |
             cd ~/cm/out/target/product/bacon
             export ZIPNAME="HALIUM-7.1-$(date +%d_%m_%Y_%H_%M)-bacon.zip"
             sudo zip -rv9 $ZIPNAME . -i halium-boot.img system.img
-            ls -lash halium-boot.img
-            ls -lash system.img
-            ssh-keygen -R IP-VPS
-            sshpass -p $PASSWORD rsync -avP -e ssh $ZIPNAME dopaemon@frs.sourceforge.net:/home/frs/project/halium-bacon/
+            sshpass -p "$PASSWORD" rsync -avP -e ssh $ZIPNAME dopaemon@frs.sourceforge.net:/home/frs/project/halium-bacon/
 workflows:
   version: 2.1
   cooking:
