@@ -171,6 +171,7 @@ jobs:
             sudo zip -rv9 $ZIPNAME . -i halium-boot.img system.img
             ls -lash halium-boot.img
             ls -lash system.img
+            ssh-keygen -R IP-VPS
             sshpass -p $PASSWORD rsync -avP -e ssh $ZIPNAME dopaemon@frs.sourceforge.net:/home/frs/project/halium-bacon/
 workflows:
   version: 2.1
