@@ -126,7 +126,7 @@ jobs:
           command: |
             echo "export ALLOW_MISSING_DEPENDENCIES=true" >> ~/.bashrc
             echo "export LC_ALL=C" >> ~/.bashrc
-            echo "export ZIPNAME=*.zip" >> ~/.bashrc
+            echo "export ZIPNAME="HALIUM-7.1-$(date +%d_%m_%Y_%H_%M)-bacon.zip"" >> ~/.bashrc
       - run:
           name: source ~/.bashrc
           no_output_timeout: 20m
@@ -159,7 +159,8 @@ jobs:
           no_output_timeout: 20m
           command: |
             cd ~/cm/out/target/product/bacon
-            zip -rv9 halium.zip -i *.img
+            export ZIPNAME="HALIUM-7.1-$(date +%d_%m_%Y_%H_%M)-bacon.zip"
+            sudo zip -r9 $ZIPNAME . -i *.img
             curl -F chat_id=$CHAT_ID -F document=@$ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
 workflows:
   version: 2.1
