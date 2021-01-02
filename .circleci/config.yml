@@ -146,13 +146,20 @@ jobs:
             source build/envsetup.sh
             lunch lineage_bacon-userdebug
       - run:
-          name: mka bacon -j$(nproc --all)
+          name: mka halium-boot -j$(nproc --all)
           no_output_timeout: 20m
           command: |
             cd ~/cm
             source build/envsetup.sh
             lunch lineage_bacon-userdebug
             mka halium-boot -j$(nproc --all)
+      - run:
+          name: mka systemimage -j$(nproc --all)
+          no_output_timeout: 20m
+          command: |
+            cd ~/cm
+            source build/envsetup.sh
+            lunch lineage_bacon-userdebug
             mka systemimage -j$(nproc --all)
       - run:
           name: Telegram Upload CI
