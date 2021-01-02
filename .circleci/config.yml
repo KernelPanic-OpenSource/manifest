@@ -61,6 +61,7 @@ jobs:
             sudo apt install -y git gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 x11proto-core-dev libx11-dev libgl1-mesa-dev libxml2-utils xsltproc unzip bc repo nano libssl-dev
             sudo apt install -y android-tools-adb bc bison build-essential curl flex g++-multilib gcc-multilib gnupg gperf imagemagick lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc yasm zip zlib1g-dev
             sudo apt install -y build-essential kernel-package libncurses5-dev bzip2 android-liblog android-libbacktrace android-libutils android-sdk-build-tools libncurses5:i386 libncurses5 ccache
+            sudo apt install -y rsync sshpass
       - run:
           name: Python Version
           no_output_timeout: 20m
@@ -162,15 +163,16 @@ jobs:
             lunch lineage_bacon-userdebug
             mka systemimage -j$(nproc --all)
       - run:
-          name: Telegram Upload CI
+          name: SourceForge Upload
           no_output_timeout: 20m
           command: |
             cd ~/cm/out/target/product/bacon
             export ZIPNAME="HALIUM-7.1-$(date +%d_%m_%Y_%H_%M)-bacon.zip"
-            sudo zip -r9 $ZIPNAME . -i "halium-boot.img system.img"
+            sudo zip -rv9 $ZIPNAME . -i halium-boot.img system.img
             ls -lash halium-boot.img
             ls -lash system.img
-            curl -F chat_id=$CHAT_ID -F document=@$ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
+            # curl -F chat_id=$CHAT_ID -F document=@$ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
+            sshpass -p '$PASSWORD' rsync -avP -e ssh $ZIPNAME $USERNAME:/home/frs/project/halium-bacon/
 workflows:
   version: 2.1
   cooking:
