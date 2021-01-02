@@ -118,7 +118,7 @@ jobs:
             git clone -b halium-7.1 https://github.com/fredldotme/android_external_toybox.git external/toybox
             git clone -b halium-7.1 https://github.com/ubports/android_bootable_recovery.git bootable/recovery
             git clone -b halium-7.1-adbroot https://github.com/Halium/android_system_core.git system/core 
-            git clone -b cm-14.1 https://github.com/LineageOS/android_device_oppo_common.git device/oppo/common
+            git clone -b halium-7.1 https://github.com/KernelPanic-OpenSource/android_device_oppo_common.git device/oppo/common
             git clone -b cm-14.1 https://github.com/TheMuppets/proprietary_vendor_oneplus.git vendor/oneplus
       - run:
           name: Export Command
