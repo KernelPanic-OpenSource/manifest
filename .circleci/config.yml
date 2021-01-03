@@ -114,7 +114,7 @@ jobs:
             rm -rvf bootable/recovery
             rm -rvf system/core
             git clone -b halium-7.1 https://github.com/ubports/android_device_oneplus_bacon-1.git device/oneplus/bacon
-            git clone -b halium-7.1 --single-branch https://github.com/ubports/android_kernel_oneplus_msm8974.git kernel/oneplus/msm8974
+            git clone -b halium-7.1 --single-branch https://github.com/KernelPanic-OpenSource/android_kernel_oneplus_bacon.git kernel/oneplus/msm8974
             git clone -b halium-7.1 https://github.com/fredldotme/android_external_gpg.git external/gpg
             git clone -b halium-7.1 https://github.com/fredldotme/android_external_toybox.git external/toybox
             git clone -b halium-7.1 https://github.com/ubports/android_bootable_recovery.git bootable/recovery
