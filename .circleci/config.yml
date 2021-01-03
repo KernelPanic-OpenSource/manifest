@@ -120,7 +120,7 @@ jobs:
             git clone -b halium-7.1 https://github.com/ubports/android_bootable_recovery.git bootable/recovery
             git clone -b halium-7.1-adbroot https://github.com/Halium/android_system_core.git system/core 
             git clone -b halium-7.1 https://github.com/KernelPanic-OpenSource/android_device_oppo_common.git device/oppo/common
-            git clone -b halium-7.1 https://github.com/KernelPanic-OpenSource/android_vendor_oneplus_bacon.git vendor/oneplus
+            git clone -b halium-7.1 https://github.com/KernelPanic-OpenSource/android_vendor_oneplus_bacon.git vendor/oneplus/bacon
       - run:
           name: Export Command
           no_output_timeout: 20m
