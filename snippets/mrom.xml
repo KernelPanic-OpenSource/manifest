@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote  name="aosp"
+           fetch="https://android.googlesource.com/" />
+
+  <remote  name="github"
+           fetch="https://github.com" />
+
+  <remote  name="mrom"
+	   fetch="https://github.com/multirom-klte" />
+
+  <remote  name="bacon"
+	   fetch="https://github.com/OnePlus-One" />
+
+  <remote  name="twrp-tree"
+	   fetch="https://github.com/TeamWin" />
+
+  <remote  name="cyanogenmod"
+	   fetch="https://github.com/CyanogenMod" />
+
+  </project>
+  <project path="bootable/recovery" name="android_bootable_recovery" remote="mrom" revision="android-9.0-mrom" />
+  <project path="system/extras/multirom" name="multirom" remote="mrom" revision="master" />
+  <project path="system/extras/libbootimg" name="libbootimg" remote="mrom" revision="master" />
+
+  <project path="device/oneplus/bacon" name="device_oneplus_bacon" remote="bacon" revision="TWRP-MR" />
+  <project path="device/oppo/msm8974-common" name="android_device_oppo_msm8974-common" remote="twrp-tree" revision="android-6.0" />
+  <project path="kernel/oneplus/msm8974" name="android_kernel_oneplus_msm8974" remote="cyanogenmod" revision="cm-13.0" />
+</manifest>
