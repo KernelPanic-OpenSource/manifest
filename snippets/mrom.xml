@@ -18,7 +18,7 @@
   <remote  name="cyanogenmod"
 	   fetch="https://github.com/CyanogenMod" />
 
-  </project>
+
   <project path="bootable/recovery" name="android_bootable_recovery" remote="mrom" revision="android-9.0-mrom" />
   <project path="system/extras/multirom" name="multirom" remote="mrom" revision="master" />
   <project path="system/extras/libbootimg" name="libbootimg" remote="mrom" revision="master" />
