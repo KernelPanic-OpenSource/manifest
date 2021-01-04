@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote  name="aosp"
+  <remote  name="aospp"
            fetch="https://android.googlesource.com/" />
 
   <remote  name="github"
