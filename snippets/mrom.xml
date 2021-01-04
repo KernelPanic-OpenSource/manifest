@@ -3,7 +3,7 @@
   <remote  name="aospp"
            fetch="https://android.googlesource.com/" />
 
-  <remote  name="github"
+  <remote  name="githubb"
            fetch="https://github.com" />
 
   <remote  name="mrom"
