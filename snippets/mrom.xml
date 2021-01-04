@@ -24,6 +24,6 @@
   <project path="system/extras/libbootimg" name="libbootimg" remote="mrom" revision="master" />
 
   <project path="device/oneplus/bacon" name="device_oneplus_bacon" remote="bacon" revision="TWRP-MR" />
-  <project path="device/oppo/msm8974-common" name="android_device_oppo_msm8974-common" remote="cyanogenmod" revision="android-6.0" />
+  <project path="device/oppo/msm8974-common" name="android_device_oppo_msm8974-common" remote="cyanogenmod" revision="cm-13.0" />
   <project path="kernel/oneplus/msm8974" name="android_kernel_oneplus_msm8974" remote="cyanogenmod" revision="cm-13.0" />
 </manifest>
