@@ -18,6 +18,7 @@ jobs:
           command: |
             cd ~/twrp
             git clone -b cm-14.1 https://github.com/LineageOS/android_kernel_oneplus_msm8974.git kernel/oneplus/msm8974
+            git clone -b android-6.0.1 https://github.com/KernelPanic-OpenSource/android_device_oneplus_bacon device/oneplus/bacon
             # rm -rf vendor/qcom/opensource/cryptfs_hw
             source build/envsetup.sh
             export ALLOW_MISSING_DEPENDENCIES=true
