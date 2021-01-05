@@ -21,7 +21,7 @@ jobs:
             source build/envsetup.sh
             export ALLOW_MISSING_DEPENDENCIES=true
             export LC_ALL=C
-            lunch cm_bacon-eng
+            lunch lineage_bacon-eng
             mka -j$(nproc --all) recoveryimage
             mka -j$(nproc --all) multirom_zip
             mka -j$(nproc --all) multirom_uninstaller
