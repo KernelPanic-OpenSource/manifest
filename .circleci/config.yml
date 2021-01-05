@@ -9,29 +9,28 @@ jobs:
           no_output_timeout: 20m
           command: |
             cd ~
-            mkdir ~/MultiROM && cd ~/MultiROM
-            repo init -u https://github.com/KernelPanic-OpenSource/manifest.git -b mr-7.1
+            mkdir ~/twrp && cd ~/twrp
+            repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b omni-6.0
             repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
           name: Building
           no_output_timeout: 20m
           command: |
-            cd ~/MultiROM
-            rm -rf vendor/qcom/opensource/cryptfs_hw
+            cd ~/twrp
+            git clone -b cm-14.1 https://github.com/LineageOS/android_kernel_oneplus_msm8974.git kernel/oneplus/msm8974
+            # rm -rf vendor/qcom/opensource/cryptfs_hw
             source build/envsetup.sh
             export ALLOW_MISSING_DEPENDENCIES=true
             export LC_ALL=C
-            lunch tipsy_bacon-eng
+            lunch omni_bacon-eng
             mka -j$(nproc --all) recoveryimage
-            mka -j$(nproc --all) multirom_zip
-            mka -j$(nproc --all) multirom_uninstaller
       - run:
           name: Telegram Upload CI
           no_output_timeout: 20m
           command: |
-            cd ~/MultiROM/out/target/product/bacon
-            export ZIPNAME="MultiROM-7.1-$(date +%d_%m_%Y_%H_%M)-bacon.zip"
-            sudo zip -r9 $ZIPNAME . -i TWRP_multirom_bacon_*.img multirom-*-bacon.zip multirom_uninstaller.zip
+            cd ~/twrp/out/target/product/bacon
+            export ZIPNAME="TWRP-$(date +%d_%m_%Y_%H_%M)-bacon.zip"
+            sudo zip -r9 $ZIPNAME . -i *.img
             curl -F chat_id=$CHAT_ID -F document=@$ZIPNAME -F parse_mode=markdown https://api.telegram.org/bot$BOT_TOKEN/sendDocument
 workflows:
   version: 2.1
