@@ -99,10 +99,10 @@
 
 <!-- ADD IN TWRP & MULTIROM REPOS  -->
   <project name="bootable_recovery" path="bootable/recovery" remote="home" revision="mr-9.0" />
-  <project name="system_extras_multirom" path="system/extras/multirom" remote="home" revision="mr-7.1" />
+  <project name="multirom" path="system/extras/multirom" remote="mr" revision="master" />
   <project name="system_extras_multirom_kexec-tools" path="system/extras/multirom/kexec-tools" remote="home" revision="mr-7.1" />
-  <project name="system_extras_libbootimg" path="system/extras/libbootimg" remote="home" revision="mr-7.1" />
-  <project name="system_extras_multirom_adbd" path="system/extras/multirom/adbd" remote="home" revision="mr-7.1" />
+  <project name="libbootimg" path="system/extras/libbootimg" remote="mr" revision="master" />
+  <project name="adbd" path="system/extras/multirom/adbd" remote="mr" revision="master" />
 
 <!-- ADD IN DEVICE-SPECIFIC REPOS  -->
   <project name="device_oppo_common" path="device/oppo/common" remote="home" revision="mr-7.1" />
