@@ -5,6 +5,12 @@ jobs:
       - image: dopaemon/docker-image:MultiROM
    steps:
       - run:
+          name: Install Packages
+          no_output_timeout: 20m
+          command: |
+            sudo apt update
+            sudo apt install android-libcrypto-utils
+      - run:
           name: Info VPS
           no_output_timeout: 20m
           command: |
