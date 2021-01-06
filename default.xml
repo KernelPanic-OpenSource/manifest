@@ -713,4 +713,7 @@
 
   <!-- OmniROM -->
   <include name="omni-default.xml" />
+
+  <!-- MultiROM -->
+  <include name="multirom-default.xml" />
 </manifest>

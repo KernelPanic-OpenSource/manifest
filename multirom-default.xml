@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="mr"
+           fetch="https://github.com/multirom-klte" />
+
+  <remote  name="home"
+           fetch="https://github.com/KernelPanic-OpenSource" />
+
+<!-- ADD IN TWRP & MULTIROM REPOS  -->
+  <project name="bootable_recovery" path="bootable/recovery" remote="home" revision="mr-9.0" />
+  <project name="system_extras_multirom" path="system/extras/multirom" remote="home" revision="mr-9.0" />
+  <project name="system_extras_multirom_kexec-tools" path="system/extras/multirom/kexec-tools" remote="home" revision="mr-7.1" />
+  <project name="libbootimg" path="system/extras/libbootimg" remote="mr" revision="master" />
+  <!-- <project name="system_extras_multirom_adbd" path="system/extras/multirom/adbd" remote="home" revision="mr-9.0" /> -->
+
+<!-- ADD IN DEVICE-SPECIFIC REPOS  -->
+  <project name="device_oppo_common" path="device/oppo/common" remote="home" revision="mr-7.1" />
+  <project name="device_oneplus_bacon" path="device/oneplus/bacon" remote="home" revision="mr-9.0" />
+  <project name="kernel_oneplus_bacon" path="kernel/oneplus/bacon" remote="home" revision="mr-7.1" />
+
+</manifest>
