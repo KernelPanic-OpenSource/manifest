@@ -101,10 +101,10 @@
   <project path="external/zlib" name="platform/external/zlib" groups="pdk" />
 
 <!-- ADD IN TWRP & MULTIROM REPOS  -->
-  <project name="android_bootable_recovery" path="bootable/recovery" remote="va" revision="android-9.0-mrom" />
-  <project name="multirom" path="system/extras/multirom" remote="va" revision="android-9.0" />
+  <project name="bootable_recovery" path="bootable/recovery" remote="home" revision="mr-9.0" />
+  <project name="system_extras_multirom" path="system/extras/multirom" remote="home" revision="mr-9.0" />
   <project name="system_extras_multirom_kexec-tools" path="system/extras/multirom/kexec-tools" remote="home" revision="mr-7.1" />
-  <project name="libbootimg" path="system/extras/libbootimg" remote="va" revision="master" />
+  <project name="libbootimg" path="system/extras/libbootimg" remote="mr" revision="android-9.0" />
   <project name="system_extras_multirom_adbd" path="system/extras/multirom/adbd" remote="home" revision="mr-7.1" />
 
 <!-- ADD IN DEVICE-SPECIFIC REPOS  -->
