@@ -33,7 +33,7 @@ sudo chmod a+x /usr/bin/repo
 
 ## Repo Sync
 ```bash
-repo init -u https://github.com/KernelPanic-OpenSource/manifest.git -b mr-7.1
+repo init --depth=1 -u https://github.com/KernelPanic-OpenSource/manifest.git -b mr-9.0-bak
 
 repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 ```
