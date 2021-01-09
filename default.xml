@@ -110,6 +110,6 @@
 <!-- ADD IN DEVICE-SPECIFIC REPOS  -->
   <project name="device_oppo_common" path="device/oppo/common" remote="home" revision="mr-7.1" />
   <project name="device_oneplus_bacon" path="device/oneplus/bacon" remote="home" revision="mr-9.0" />
-  <!-- <project name="kernel_oneplus_bacon" path="kernel/oneplus/bacon" remote="home" revision="mr-7.1" /> -->
+  <project name="kernel_oneplus_bacon" path="kernel/oneplus/bacon" remote="home" revision="mr-7.1" />
 
 </manifest>
