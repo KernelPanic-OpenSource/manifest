@@ -36,7 +36,7 @@ jobs:
           command: |
             lscpu
             df -h
-            java -v
+            java -version
       - run:
           name: Syncing Source CherishOS
           no_output_timeout: 20m
