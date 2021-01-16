@@ -112,6 +112,7 @@ jobs:
             cd ~/cm
             rm -rvf external/toybox
             rm -rvf bootable/recovery
+            rm -rvf external/gpg
             # rm -rvf system/core
             git clone -b halium-9.0 https://github.com/KernelPanic-OpenSource/android_device_oneplus_bacon.git device/oneplus/bacon
             git clone -b halium-9.0 --single-branch https://github.com/KernelPanic-OpenSource/android_kernel_oneplus_bacon.git kernel/oneplus/bacon
