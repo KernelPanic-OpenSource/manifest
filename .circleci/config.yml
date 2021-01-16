@@ -129,6 +129,8 @@ jobs:
           command: |
             cd ~/cm
             hybris-patches/apply-patches.sh --mb
+            git am --continue
+            
       - run:
           name: Export Command
           no_output_timeout: 20m
