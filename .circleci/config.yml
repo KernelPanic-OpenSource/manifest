@@ -23,14 +23,22 @@ jobs:
           command: |
             lscpu
             df -h
+            echo $(nproc --all)
+      - run:
+          name: Install Puthon 3 For Repo Sync
+          no_output_timeout: 20m
+          command: |
+            sudo apt install python -y
+            curl https://storage.googleapis.com/git-repo-downloads/repo-1 > ~/bin/repo
+            chmod a+x ~/bin/repo
       - run:
           name: Syncing Source LineageOS
           no_output_timeout: 20m
           command: |
             cd ~
             mkdir ~/LineageOS && cd ~/LineageOS
-            repo init -u https://github.com/LineageOS/android.git -b lineage-18.1
-            repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+            python3 ~/bin/repo init -u https://github.com/LineageOS/android.git -b lineage-18.1
+            python3 ~/bin/repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
           name: Info
           no_output_timeout: 20m
