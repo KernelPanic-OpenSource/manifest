@@ -38,6 +38,7 @@ jobs:
           command: |
             git config --global user.email "polarisdp@gmail.com"
             git config --global user.name "dopaemon"
+            git config --global color.ui false
       - run:
           name: Syncing Source LineageOS
           no_output_timeout: 20m
