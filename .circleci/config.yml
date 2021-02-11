@@ -23,7 +23,7 @@ jobs:
           command: |
             cd ~
             mkdir ~/MultiROM && cd ~/MultiROM
-            repo init -u https://github.com/KernelPanic-OpenSource/manifest.git -b mr-9.0
+            repo init -u https://github.com/KernelPanic-OpenSource/manifest.git -b mr-9.0-bak
             repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
           name: Building
