@@ -28,15 +28,15 @@ jobs:
           name: Install Puthon 3 For Repo Sync
           no_output_timeout: 20m
           command: |
+            mkdir ~/LineageOS && cd ~/LineageOS
             sudo apt install python -y
-            curl https://storage.googleapis.com/git-repo-downloads/repo-1 > ~/bin/repo
-            chmod a+x ~/bin/repo
+            curl https://storage.googleapis.com/git-repo-downloads/repo-1 > repo
+            chmod a+x repo
       - run:
           name: Syncing Source LineageOS
           no_output_timeout: 20m
           command: |
-            cd ~
-            mkdir ~/LineageOS && cd ~/LineageOS
+            cd ~/LineageOS
             python3 ~/bin/repo init -u https://github.com/LineageOS/android.git -b lineage-18.1
             python3 ~/bin/repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
