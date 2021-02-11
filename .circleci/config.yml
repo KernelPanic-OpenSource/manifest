@@ -37,8 +37,8 @@ jobs:
           no_output_timeout: 20m
           command: |
             cd ~/LineageOS
-            python3 ~/bin/repo init -u https://github.com/LineageOS/android.git -b lineage-18.1
-            python3 ~/bin/repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+            python3 repo init -u https://github.com/LineageOS/android.git -b lineage-18.1
+            python3 repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
           name: Info
           no_output_timeout: 20m
