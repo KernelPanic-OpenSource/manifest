@@ -33,6 +33,12 @@ jobs:
             curl https://storage.googleapis.com/git-repo-downloads/repo-1 > repo
             chmod a+x repo
       - run:
+          name: Git Config
+          no_output_timeout: 20m
+          command: |
+            git config --global user.email "polarisdp@gmail.com"
+            git config --global user.name "dopaemon"
+      - run:
           name: Syncing Source LineageOS
           no_output_timeout: 20m
           command: |
