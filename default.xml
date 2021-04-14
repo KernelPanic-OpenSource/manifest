@@ -1,1 +1,35 @@
-init
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote  name="github"
+           fetch="https://github.com" />
+
+  <remote  name="KernelPanic"
+           fetch="https://github.com/KernelPanic-OpenSource" />
+  
+    <default revision="master"
+           remote="KernelPanic"
+           sync-j="4" />
+
+  <!-- NT5SRC -->
+  <project path="NT/admin" name="Win2K3_NT_admin" remote="KernelPanic"/>
+  <project path="NT/base" name="Win2K3_NT_base" remote="KernelPanic"/>
+  <project path="NT/com" name="Win2K3_NT_com" remote="KernelPanic"/>
+  <project path="NT/developer" name="Win2K3_NT_developer" remote="KernelPanic"/>
+  <project path="NT/drivers" name="Win2K3_NT_drivers" remote="KernelPanic"/>
+  <project path="NT/ds" name="Win2K3_NT_ds" remote="KernelPanic"/>
+  <project path="NT/enduser" name="Win2K3_NT_enduser" remote="KernelPanic"/>
+  <project path="NT/inetcore" name="Win2K3_NT_inetcore" remote="KernelPanic"/>
+  <project path="NT/inetsrv" name="Win2K3_NT_inetsrv" remote="KernelPanic"/>
+  <project path="NT/mergedcomponents" name="Win2K3_NT_mergedcomponents" remote="KernelPanic"/>
+  <project path="NT/multimedia" name="Win2K3_NT_multimedia" remote="KernelPanic"/>
+  <project path="NT/net" name="Win2K3_NT_net" remote="KernelPanic"/>
+  <project path="NT/printscan" name="Win2K3_NT_printscan" remote="KernelPanic"/>
+  <project path="NT/public" name="Win2K3_NT_public" remote="KernelPanic"/>
+  <project path="NT/sdktools" name="Win2K3_NT_sdktools" remote="KernelPanic"/>
+  <project path="NT/shell" name="Win2K3_NT_shell" remote="KernelPanic"/>
+  <project path="NT/termsrv" name="Win2K3_NT_termsrv" remote="KernelPanic"/>
+  <project path="NT/tools" name="Win2K3_NT_tools" remote="KernelPanic"/>
+  <project path="NT/windows" name="Win2K3_NT_windows" remote="KernelPanic"/>
+  <project path="NT" name="Win2K3_NT" remote="KernelPanic"/>
+</manifest>
