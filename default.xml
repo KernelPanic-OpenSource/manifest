@@ -7,7 +7,7 @@
   <remote  name="KernelPanic"
            fetch="https://github.com/KernelPanic-OpenSource" />
   
-    <default revision="master"
+  <default revision="master"
            remote="KernelPanic"
            sync-j="4" />
 
