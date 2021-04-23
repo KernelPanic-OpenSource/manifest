@@ -80,15 +80,7 @@ jobs:
           command: |
             git config --global user.name "dopaemon"
             git config --global user.email "polarisdp@gmail.com"
-            git config --global color.ui true
-      - run:
-          name: Akhilnarang Scripts
-          no_output_timeout: 20m
-          command: |
-            git clone https://github.com/akhilnarang/scripts ~/scripts
-            cd ~/scripts
-            bash setup/android_build_env.sh && bash setup/install_android_sdk.sh
-            df -hal
+            git config --global color.ui false
       - run:
           name: Curl Repo Bin From Google
           no_output_timeout: 20m
