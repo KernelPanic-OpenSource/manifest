@@ -5,6 +5,11 @@ jobs:
       - image: dopaemon/docker-image:android
    steps:
       - run:
+          name: DateBuild
+          no_output_timeout: 20m
+          command: |
+            echo "23/04/2021"
+      - run:
           name: Include DPKG i386
           no_output_timeout: 20m
           command: |
