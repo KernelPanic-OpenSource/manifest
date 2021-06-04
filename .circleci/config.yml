@@ -126,20 +126,20 @@ jobs:
           name: source build/envsetup.sh
           no_output_timeout: 20m
           command: |
-            cd ~/cm
+            cd ~/lineage
             source build/envsetup.sh
       - run:
           name: lunch lineage_grandprimeve3g-userdebug
           no_output_timeout: 20m
           command: |
-            cd ~/cm
+            cd ~/lineage
             source build/envsetup.sh
             lunch lineage_grandprimeve3g-userdebug
       - run:
           name: mka bacon -j$(nproc --all)
           no_output_timeout: 20m
           command: |
-            cd ~/cm
+            cd ~/lineage
             source build/envsetup.sh
             lunch lineage_grandprimeve3g-userdebug
             mka bacon -j$(nproc --all)
@@ -154,7 +154,7 @@ jobs:
           name: SourceForge Upload
           no_output_timeout: 20m
           command: |
-            cd ~/cm/out/target/product/bacon
+            cd ~/lineage/out/target/product/bacon
             export ZIPNAME="HALIUM-7.1-$(date +%d_%m_%Y_%H_%M)-bacon.zip"
             sudo zip -rv9 $ZIPNAME . -i halium-boot.img system.img
             sshpass -p "$PASSWORD" rsync -avP -e ssh $ZIPNAME dopaemon@frs.sourceforge.net:/home/frs/project/halium-bacon/
