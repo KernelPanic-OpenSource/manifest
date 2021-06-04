@@ -97,8 +97,8 @@ jobs:
           no_output_timeout: 20m
           command: |
             cd ~/
-            mkdir ~/cm && cd ~/cm
-            python3.6 ~/repo init -u https://github.com/Halium/android.git -b halium-7.1
+            mkdir ~/lineage && cd ~/lineage
+            python3.6 ~/repo init -u https://github.com/LineageOS/android -b cm-14.1
       - run:
           name: Start Sync
           no_output_timeout: 20m
