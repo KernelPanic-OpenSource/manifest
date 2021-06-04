@@ -77,12 +77,9 @@ jobs:
             git config --global user.email "polarisdp@gmail.com"
             git config --global color.ui true
       - run:
-          name: Akhilnarang Scripts
+          name: df -hal
           no_output_timeout: 20m
           command: |
-            git clone https://github.com/akhilnarang/scripts ~/scripts
-            cd ~/scripts
-            bash setup/android_build_env.sh && bash setup/install_android_sdk.sh
             df -hal
       - run:
           name: Curl Repo Bin From Google
