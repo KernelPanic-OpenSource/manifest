@@ -109,10 +109,10 @@ jobs:
           name: Git Tree Bacon
           no_output_timeout: 20m
           command: |
-          cd ~/lineage
-          git clone -b cm-14.1 https://github.com/diepquynh/android_device_samsung_grandprimeve3g device/samsung/grandprimeve3g
-          git clone -b cm-14.1 https://github.com/diepquynh/android_vendor_samsung_grandprimeve3g vendor/samsung/grandprimeve3g
-          git clone -b cm-14.1 https://github.com/diepquynh/android_kernel_samsung_grandprimeve3g kernel/samsung/grandprimeve3g
+            cd ~/lineage
+            git clone -b cm-14.1 https://github.com/diepquynh/android_device_samsung_grandprimeve3g device/samsung/grandprimeve3g
+            git clone -b cm-14.1 https://github.com/diepquynh/android_vendor_samsung_grandprimeve3g vendor/samsung/grandprimeve3g
+            git clone -b cm-14.1 https://github.com/diepquynh/android_kernel_samsung_grandprimeve3g kernel/samsung/grandprimeve3g
       - run:
           name: Export Command
           no_output_timeout: 20m
