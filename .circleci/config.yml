@@ -103,24 +103,16 @@ jobs:
           name: Start Sync
           no_output_timeout: 20m
           command: |
-            cd ~/cm
+            cd ~/lineage
             python3.6 ~/repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
           name: Git Tree Bacon
           no_output_timeout: 20m
           command: |
-            cd ~/cm
-            rm -rvf external/toybox
-            rm -rvf bootable/recovery
-            rm -rvf system/core
-            git clone -b halium-7.1 https://github.com/ubports/android_device_oneplus_bacon-1.git device/oneplus/bacon
-            git clone -b halium-7.1 --single-branch https://github.com/KernelPanic-OpenSource/android_kernel_oneplus_bacon.git kernel/oneplus/msm8974
-            git clone -b halium-7.1 https://github.com/fredldotme/android_external_gpg.git external/gpg
-            git clone -b halium-7.1 https://github.com/fredldotme/android_external_toybox.git external/toybox
-            git clone -b halium-7.1 https://github.com/ubports/android_bootable_recovery.git bootable/recovery
-            git clone -b halium-7.1-adbroot https://github.com/Halium/android_system_core.git system/core 
-            git clone -b halium-7.1 https://github.com/KernelPanic-OpenSource/android_device_oppo_common.git device/oppo/common
-            git clone -b halium-7.1 https://github.com/KernelPanic-OpenSource/android_vendor_oneplus_bacon.git vendor/oneplus/bacon
+          cd ~/lineage
+          git clone -b cm-14.1 https://github.com/diepquynh/android_device_samsung_grandprimeve3g device/samsung/grandprimeve3g
+          git clone -b cm-14.1 https://github.com/diepquynh/android_vendor_samsung_grandprimeve3g vendor/samsung/grandprimeve3g
+          git clone -b cm-14.1 https://github.com/diepquynh/android_kernel_samsung_grandprimeve3g kernel/samsung/grandprimeve3g
       - run:
           name: Export Command
           no_output_timeout: 20m
@@ -140,28 +132,20 @@ jobs:
             cd ~/cm
             source build/envsetup.sh
       - run:
-          name: lunch lineage_bacon-userdebug
+          name: lunch lineage_grandprimeve3g-userdebug
           no_output_timeout: 20m
           command: |
             cd ~/cm
             source build/envsetup.sh
-            lunch lineage_bacon-userdebug
+            lunch lineage_grandprimeve3g-userdebug
       - run:
-          name: mka halium-boot -j$(nproc --all)
+          name: mka bacon -j$(nproc --all)
           no_output_timeout: 20m
           command: |
             cd ~/cm
             source build/envsetup.sh
-            lunch lineage_bacon-userdebug
-            mka halium-boot -j$(nproc --all)
-      - run:
-          name: mka systemimage -j$(nproc --all)
-          no_output_timeout: 20m
-          command: |
-            cd ~/cm
-            source build/envsetup.sh
-            lunch lineage_bacon-userdebug
-            mka systemimage -j$(nproc --all)
+            lunch lineage_grandprimeve3g-userdebug
+            mka bacon -j$(nproc --all)
       - run:
           name: Create Ssh
           no_output_timeout: 20m
