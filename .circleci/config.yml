@@ -11,6 +11,9 @@ jobs:
             ls /tmp/ccache
             ls /aosp
             ls /root/.gitconfig
+            ln -s /tmp/ccache ~/aosp/ccache
+            ln -s /aosp ~/aosp
+            ln -s /root/.gitconfig ~/.gitconfig
       - run:
           name: Include DPKG i386
           no_output_timeout: 20m
