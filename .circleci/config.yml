@@ -14,9 +14,11 @@ jobs:
           no_output_timeout: 20m
           command: |
              mkdir aosp ; cd aosp
-             ls /root
+             git clone https://github.com/KernelPanic-OpenSource/aosp-docker.git
+             cd aosp-docker
+             mv * ../
+             cd ..
              export AOSP_VOL=$PWD
-             curl -O https://raw.githubusercontent.com/KernelPanic-OpenSource/aosp-docker/master/build-pixelexperience-pie.sh
              bash ./build-pixelexperience-pie.sh
 workflows:
   version: 2.1
