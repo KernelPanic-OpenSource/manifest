@@ -1,12 +1,16 @@
 version: 2.1
-services:
-  aosp:
-    image: dopaemon/aosp:latest
-    volumes:
-      - ~/aosp/ccache:/tmp/ccache
-      - ~/aosp:/aosp
-      - ~/.gitconfig:/root/.gitconfig
+jobs:
+  android:
+   docker:
+      - image: dopaemon/aosp:latest
    steps:
+      - run:
+          name: Mount ccache
+          no_output_timeout: 20m
+          command: |
+            ls /tmp/ccache
+            ls /aosp
+            ls /root/.gitconfig
       - run:
           name: Include DPKG i386
           no_output_timeout: 20m
