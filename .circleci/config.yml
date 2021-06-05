@@ -110,7 +110,7 @@ jobs:
             cd ~/lineage
             git clone -b cm-14.1 https://github.com/diepquynh/android_device_samsung_grandprimeve3g device/samsung/grandprimeve3g
             git clone -b cm-14.1 https://github.com/diepquynh/android_vendor_samsung_grandprimeve3g vendor/samsung/grandprimeve3g
-            git clone -b cm-14.1 https://github.com/diepquynh/android_kernel_samsung_sprd-RZ kernel/samsung/sprd
+            git clone -b cm-14.1 https://github.com/diepquynh/android_kernel_samsung_grandprimeve3g kernel/samsung/grandprimeve3g
             git clone -b cm-14.1 https://github.com/diepquynh/android_device_samsung_scx35-common device/samsung/scx35-common
             git clone -b cm-14.1 https://github.com/diepquynh/android_device_samsung_scx30g2-common device/samsung/scx30g2-common
             git clone -b cm-14.1 https://github.com/diepquynh/android_vendor_samsung_scx30g2-common vendor/samsung/scx30g2-common
