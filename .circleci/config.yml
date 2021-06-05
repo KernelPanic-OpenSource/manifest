@@ -14,7 +14,8 @@ jobs:
           no_output_timeout: 20m
           command: |
              mkdir aosp ; cd aosp
-             ln -s /aosp ~/aosp
+             sudo apt install tree
+             tree
              export AOSP_VOL=$PWD
              curl -O https://raw.githubusercontent.com/KernelPanic-OpenSource/aosp-docker/master/build-pixelexperience-pie.sh
              bash ./build-pixelexperience-pie.sh
