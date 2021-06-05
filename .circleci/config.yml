@@ -15,7 +15,7 @@ jobs:
           command: |
              mkdir aosp ; cd aosp
              export AOSP_VOL=$PWD
-             curl -O https://raw.githubusercontent.com/dopaemon/aosp-docker/master/build-pixelexperience-pie.sh
+             curl -O https://raw.githubusercontent.com/KernelPanic-OpenSource/aosp-docker/master/build-pixelexperience-pie.sh
              bash ./build-pixelexperience-pie.sh
 workflows:
   version: 2.1
