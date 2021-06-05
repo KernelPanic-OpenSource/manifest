@@ -104,7 +104,7 @@ jobs:
             cd ~/lineage
             python3.6 ~/repo sync -vf -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - run:
-          name: Git Tree Bacon
+          name: Git Tree G531
           no_output_timeout: 20m
           command: |
             cd ~/lineage
@@ -116,7 +116,7 @@ jobs:
             git clone -b cm-14.1 https://github.com/diepquynh/android_vendor_samsung_scx30g2-common vendor/samsung/scx30g2-common
             git clone -b cm-14.1 https://github.com/diepquynh/android_device_samsung_sprd-common device/samsung/sprd-common
             git clone -b cm-14.1 https://github.com/LineageOS/android_external_stlport external/stlport
-            git clone -b cm.14.1 https://github.com/LineageOS/LineageOS/android_hardware_samsung hardware/samsung
+            git clone -b cm.14.1 https://github.com/LineageOS/android_hardware_samsung hardware/samsung
             git clone -b cm.14.1 https://github.com/LineageOS/android_packages_apps_SamsungServiceMode packages/apps/SamsungServiceMode
             git clone -b cm.14.1 https://github.com/diepquynh/android_hardware_sprd hardware/sprd
       - run:
