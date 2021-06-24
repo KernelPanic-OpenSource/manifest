@@ -82,6 +82,7 @@ jobs:
           no_output_timeout: 20m
           command: |
             cd ~/CherishOS
+            export USE_NINJA=false
             source build/envsetup.sh
             croot
             lunch cherish_bacon-userdebug
