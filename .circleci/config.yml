@@ -1,0 +1,16 @@
+version: 2.1
+jobs:
+  Cirrus-Run:
+   docker:
+      - image: potyarkin/cirrus-run:latest
+   steps:
+      - run:
+          name: Cirrus-Run
+          no_output_timeout: 20m
+          command: |
+            cirrus-run -h
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - Cirrus-Run
