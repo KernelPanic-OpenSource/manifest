@@ -8,7 +8,7 @@ jobs:
           name: Cirrus-Run
           no_output_timeout: 20m
           command: |
-            cirrus-run --token 1nq0o9upajl4m2i6frfqrvu1hbj1l2hmslpq4t9 --github dopaemon/AOSP -v --show-build-log always --branch main --timeout 4h .cirrus.yml
+            cirrus-run --token 1nq0o9upajl4m2i6frfqrvu1hbj1l2hmslpq4t9 --github dopaemon/AOSP -v --show-build-log always --branch main --timeout 4h .cirrus.yml.j2
 workflows:
   version: 2.1
   cooking:
