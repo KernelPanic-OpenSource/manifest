@@ -8,6 +8,7 @@ jobs:
           name: Cirrus-Run
           no_output_timeout: 20m
           command: |
+            curl https://raw.githubusercontent.com/dopaemon/AOSP/main/.cirrus.yml -o .cirrus.yml
             cirrus-run --token 1nq0o9upajl4m2i6frfqrvu1hbj1l2hmslpq4t9 --github dopaemon/AOSP -v --show-build-log always --branch main --timeout 4h
 workflows:
   version: 2.1
