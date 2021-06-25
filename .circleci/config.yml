@@ -1,0 +1,11 @@
+version: 2.1
+jobs:
+  CherishOS-Bacon:
+   docker:
+      - image: potyarkin/cirrus-run:latest
+   steps:
+      - run:
+          name: Cirrus-Run
+          no_output_timeout: 20m
+          command: |
+            cirrus-run -h
