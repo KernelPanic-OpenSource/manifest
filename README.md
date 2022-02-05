@@ -8,6 +8,8 @@ First, make sure you have an [Android build environment](https://source.android.
 
 ```
 repo init --depth=1 -u https://github.com/KernelPanic-OpenSource/manifest.git -b sc
+```
+```
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune
 ```
 
