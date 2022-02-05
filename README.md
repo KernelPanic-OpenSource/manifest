@@ -7,7 +7,7 @@ ProtonAOSP is a minimal custom Android ROM focused on UI/UX and performance, wit
 First, make sure you have an [Android build environment](https://source.android.com/setup/build/initializing) and the [repo tool](https://source.android.com/setup/build/downloading) set up. After that, run the following commands:
 
 ```
-repo init -u --depth=1 https://github.com/KernelPanic-OpenSource/manifest.git -b sc
+repo init --depth=1 -u https://github.com/KernelPanic-OpenSource/manifest.git -b sc
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune
 ```
 
