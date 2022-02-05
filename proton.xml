@@ -9,6 +9,8 @@
   <remote name="proton-ssh" fetch="ssh://git@github.com/ProtonAOSP" revision="sc" />
   <remote name="blobs" fetch="https://github.com/NeutronBlobs" revision="sc" />
   <remote name="blobs-ssh" fetch="ssh://git@github.com/NeutronBlobs" revision="sc" />
+  <remote name="KernelPanic" fetch="https://github.com/KernelPanic-OpenSource" revision="sc" />
+  <remote name="KernelPanic-ssh" fetch "ssh://git@github.com/KernelPanic-OpenSource" revision="sc" />
 
   <!-- Remove existing repositories -->
   <remove-project name="platform/external/zlib" />
@@ -19,7 +21,7 @@
   <remove-project name="platform/libcore" />
   <project name="android_libcore" path="libcore" remote="proton" groups="proton" />
   <remove-project name="platform/build" />
-  <project name="android_build_make" path="build/make" remote="proton" groups="proton">
+  <project name="android_build_make" path="build/make" remote="KernelPanic" groups="KernelPanic">
     <copyfile src="core/root.mk" dest="Makefile" />
     <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
     <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
@@ -29,9 +31,12 @@
     <linkfile src="tools" dest="build/tools" />
   </project>
   <remove-project name="platform/build/soong" />
-  <project name="android_build_soong" path="build/soong" remote="proton" groups="proton">
+  <project name="android_build_soong" path="build/soong" remote="KernelPanic" groups="KernelPanic">
     <linkfile src="root.bp" dest="Android.bp" />
     <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+  <project path="device/qcom/kernelscripts" name="AOSPA/android_kernel_build" remote="aospa" >
+    <linkfile dest="vendor/qcom/build/tasks/kernel_definitions.mk" src="kernel_definitions.mk"/>
   </project>
   <remove-project name="device/common" />
   <project name="android_device_common" path="device/common" remote="proton" groups="proton" />
@@ -122,7 +127,7 @@
   <project name="android_packages_providers_DownloadProvider" path="packages/providers/DownloadProvider" remote="proton" groups="proton" />
 
   <!-- Add new repositories -->
-  <project name="android_vendor_proton" path="vendor/proton" remote="proton" groups="proton" />
+  <project name="android_vendor_proton" path="vendor/proton" remote="KernelPanic" groups="KernelPanic" />
   <project name="android_packages_apps_ProtonWallpaperStub" path="packages/apps/ProtonWallpaperStub" remote="proton" groups="proton" />
   <project name="android_packages_apps_SimpleDeviceConfig" path="packages/apps/SimpleDeviceConfig" remote="proton" groups="proton" />
   <project name="android_packages_apps_Jelly" path="packages/apps/Jelly" remote="proton" groups="proton" />
