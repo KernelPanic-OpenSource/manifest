@@ -10,7 +10,7 @@
   <remote name="blobs" fetch="https://github.com/NeutronBlobs" revision="sc" />
   <remote name="blobs-ssh" fetch="ssh://git@github.com/NeutronBlobs" revision="sc" />
   <remote name="KernelPanic" fetch="https://github.com/KernelPanic-OpenSource" revision="sc" />
-  <remote name="KernelPanic-ssh" fetch "ssh://git@github.com/KernelPanic-OpenSource" revision="sc" />
+  <remote name="KernelPanic-ssh" fetch="ssh://git@github.com/KernelPanic-OpenSource" revision="sc" />
 
   <!-- Remove existing repositories -->
   <remove-project name="platform/external/zlib" />
