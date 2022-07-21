@@ -1,4 +1,4 @@
-# ProtonAOSP
+# ProtonAOSP - P
 
 ProtonAOSP is a minimal custom Android ROM focused on UI/UX and performance, with a touch of security and privacy. It is based on [Android Open Source Project (AOSP)](https://source.android.com/).
 
